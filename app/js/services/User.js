@@ -272,9 +272,10 @@ factory('User', [
       }
       this.busy = true;
       var _this = this;
-      return UserService.myCarts().then(function(data) {
+      return UserService.myCarts().then(function(res) {
         _this.busy = false;
-        return data || null;
+        var result = res.data.result || {};
+        return result;
       });
     };
 
@@ -284,9 +285,10 @@ factory('User', [
       }
       this.busy = true;
       var _this = this;
-      return UserService.follow(userid).then(function(data) {
+      return UserService.follow(userid).then(function(res) {
         _this.busy = false;
-        return data || null;
+        var result = res.data.result || {};
+        return result;
       });
     };
 
@@ -296,9 +298,10 @@ factory('User', [
       }
       this.busy = true;
       var _this = this;
-      return UserService.search(keyword).then(function(data) {
+      return UserService.search(keyword).then(function(res) {
         _this.busy = false;
-        return data || null;
+        var result = res.data.result || {};
+        return result;
       });
     };
 

@@ -20,7 +20,7 @@ controller('UserSearchCtrl', ['$scope', '$stateParams', '$ionicLoading', 'User',
     });
     $scope.userObj.follow(userid).then(function(data) {
       $ionicLoading.hide();
-      $scope.users[idx] = data.result;
+      $scope.users[idx] = data;
     });
   };
 }]);

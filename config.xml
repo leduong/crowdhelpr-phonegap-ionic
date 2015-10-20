@@ -4,10 +4,11 @@
   <description>
     Add your desription here
   </description>
-  <author email="diisles@gmail.com">
+  <author email="diisles@gmail.com" href="https://www.crowdhelpr.com">
     Crowdhelpr Team
   </author>
   <content src="index.html"/>
+  <allow-navigation href="https://www.crowdhelpr.com/*"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>

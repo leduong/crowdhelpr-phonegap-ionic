@@ -11,7 +11,6 @@ controller('UserCtrl', ['$scope', '$ionicLoading', '$localStorage', '$stateParam
   });
   $scope.userObj.fetch_user_profile().then(function(data) {
     $scope.user = data;
-    console.log(data);
     $scope.user.full_name = $scope.user.first_name + ' ' + $scope.user.last_name;
     $scope.userfeeds = $scope.divideFeeds();
     $ionicLoading.hide();
