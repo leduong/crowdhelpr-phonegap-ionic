@@ -66,13 +66,16 @@
     "cordova-plugin-sim",
     "nl.x-services.plugins.socialsharing",
     "org.apache.cordova.inappbrowser",
-    "phonegap-plugin-barcodescanner", {
+    "phonegap-plugin-barcodescanner",
+    {
       "locator": "https://github.com/phonegap-build/PushPlugin.git",
       "id": "com.phonegap.plugins.PushPlugin"
-    }, {
+    },
+    {
       "locator": "https://github.com/evothings/phonegap-estimotebeacons.git",
       "id": "cordova-plugin-estimote"
-    }, {
+    },
+    {
       "locator": "https://github.com/dpa99c/phonegap-launch-navigator.git",
       "id": "uk.co.workingedge.phonegap.plugin.LaunchNavigator"
     }
