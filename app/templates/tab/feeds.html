@@ -1,52 +1,34 @@
-<ion-view view-title="Feed" view-cache="false">
-  <ion-nav-buttons side="right">
-    <button ng-click="showActionSheets()" class="button"><i class="ion-android-more-horizontal"></i></button>
-  </ion-nav-buttons>
-  <ion-nav-buttons side="left">
-    <button ng-click="switchFeed()" class="button">{{ feedStatus[1] }}</button>
-  </ion-nav-buttons>
-  <ion-content class="padding">
-    <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh..."></ion-refresher>
-    <ion-item class="list card crowd-card crowd-feed" ng-repeat="feed in feeds">
-
-      <a href="#/tab/user/profile/{{feed.user_id}}" class="item item-avatar">
-        <img ng-src="{{ feed.user_image_url }}">
-        <h2>{{ feed.user_name }}</h2>
-        <span am-time-ago='feed.created_at'></span>
-      </a>
-
-      <div class="item item-body">
-        <img class="full-image" ng-src="{{ feed.image_url }}">
-        <p>{{ feed.description }}</p>
-      </div>
-
-      <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="javascript:void(0)" ng-click="likeThis(feeds, feed)">
-          <i ng-hide="feed.liked" class="icon ion-thumbsup"></i>
-          <i ng-show="feed.liked" class="icon ion-thumbsup blue"></i>
-          {{feed.likescnt}} Like
-        </a>
-        <a ng-click="storeFeed(feed)" class="tab-item" href="#/tab/feeds/{{feed.id}}/comments">
-          <i class="icon ion-chatbox"></i>
-          {{feed.cmts}} Comment
-        </a>
-        <a class="tab-item" ng-click="share(feed)" href="javascript:void(0)">
-          <i class="icon ion-share"></i>
-          Share
-        </a>
-        <a class="tab-item" ng-click="flag(feeds, feed)" href="javascript:void(0)">
-          <i class="icon ion-flag"></i>
-          {{ feed.flag }} Flagged
-        </a>
-        <a href="javascript:void(0)" ng-show="ownedByCurrentUser(feed)" class="tab-item" ng-click="removeFeed(feeds, feed)">
-          <i class="icon ion-ios-trash"></i>
-          Delete
-        </a>
-      </div>
-    </ion-item>
-    <ion-infinite-scroll ng-if="!feedDone" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
-    <div ng-show="hasError()" class="item item-text-wrap">
-      {{ error }}
-    </div>
-  </ion-content>
+<ion-view view-cache="false" view-title="Feed">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="showActionSheets()"><i class="ion-android-more-horizontal"></i></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+        <button class="button" ng-click="switchFeed()">{{ feedStatus[1] }}</button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
+        </ion-refresher>
+        <ion-item class="list card crowd-card crowd-feed" ng-repeat="feed in feeds">
+            <a class="item item-avatar" href="#/tab/user/profile/{{feed.user_id}}"><img ng-src="{{ feed.user_image_url }}"><h2>{{ feed.user_name }}</h2><span am-time-ago="feed.created_at"></span></img></a>
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{ feed.image_url }}">
+                    <p>
+                        {{ feed.description }}
+                    </p>
+                </img>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="javascript:;" ng-click="likeThis(feeds, feed)"><i class="icon ion-thumbsup" ng-class="{'calm':feed.liked}"></i> {{feed.likescnt}} Like</a>
+                <a class="tab-item" href="#/tab/feeds/{{feed.id}}/comments" ng-click="storeFeed(feed)"><i class="icon ion-chatbox"></i> {{feed.cmts}} Comment</a>
+                <a class="tab-item" href="javascript:;" ng-click="share(feed)"><i class="icon ion-share"></i> Share</a>
+                <a class="tab-item" href="javascript:;" ng-click="flag(feeds, feed)"><i class="icon ion-flag"></i> {{ feed.flag }} Flagged</a>
+                <a class="tab-item" href="javascript:;" ng-click="removeFeed(feeds, feed)" ng-show="ownedByCurrentUser(feed)"><i class="icon ion-ios-trash"></i> Delete</a>
+            </div>
+        </ion-item>
+        <ion-infinite-scroll distance="0%" ng-if="!feedDone" on-infinite="loadMore()">
+        </ion-infinite-scroll>
+        <div class="item item-text-wrap" ng-show="hasError()">
+            {{ error }}
+        </div>
+    </ion-content>
 </ion-view>

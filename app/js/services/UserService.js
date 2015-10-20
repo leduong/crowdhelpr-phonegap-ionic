@@ -29,7 +29,7 @@ factory('UserService', [
       },
       getUser: function(userid, params) {
         if (userid) {
-          return $http.get(API.user.getUser + '/?userid=' + userid, {
+          return $http.get(API.user.getUser + '?userid=' + userid, {
             params: params
           });
         } else {
@@ -37,10 +37,10 @@ factory('UserService', [
         }
       },
       follow: function(userid) {
-        return $http.post(API.user.follow + '/?userid=' + userid);
+        return $http.post(API.user.follow + '?userid=' + userid);
       },
       search: function(keyword) {
-        return $http.post(API.user.search + '/?keyword=' + keyword);
+        return $http.post(API.user.search + '?keyword=' + keyword);
       }
     };
     return exports;

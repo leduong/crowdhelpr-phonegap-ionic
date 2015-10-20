@@ -245,9 +245,10 @@ factory('User', [
       }
       this.busy = true;
       var _this = this;
-      return UserService.getUser(this.userid).then(function(data) {
+      return UserService.getUser(this.userid).then(function(res) {
         _this.busy = false;
-        return data || null;
+        var result = res.data.result || {};
+        return result;
       });
     };
 

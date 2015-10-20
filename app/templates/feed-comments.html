@@ -14,7 +14,7 @@
         <h2>{{ comment.user_name }}</h2>
         <p>{{ comment.description }}</p>
         <span class="absolute-top-right" am-time-ago='comment.created_at'></span>
-        <a class="ion-trash-a absolute-bottom-right" ng-click="removeComment(comment.id)" ng-show="comment.user_id == current_user.id" href="javascript:void(0)"></a>
+        <a class="ion-trash-a absolute-bottom-right" ng-click="removeComment(comment.id)" ng-show="comment.user_id == current_user.id" href="javascript:;"></a>
       </div>
     </ion-item>
   </ion-content>
@@ -23,6 +23,6 @@
     <label class="item item-input">
       <textarea ng-model="usercomment" placeholder="Comment"></textarea>
     </label>
-    <a href="javascript:void(0)" ng-click="sendComment(usercomment)" class="button button-clear button-positive">Send</a>
+    <a href="javascript:;" ng-click="sendComment(usercomment)" class="button button-clear button-positive">Send</a>
   </div>
 </ion-view>
