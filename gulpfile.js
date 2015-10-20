@@ -13,6 +13,7 @@ var stylish = require('jshint-stylish');
 var connectLr = require('connect-livereload');
 var streamqueue = require('streamqueue');
 var runSequence = require('run-sequence');
+var minifyCss = require('gulp-minify-css');
 var merge = require('merge-stream');
 var ripple = require('ripple-emulator');
 
@@ -94,6 +95,7 @@ gulp.task('styles', function() {
     }, ionicStream, sassStream)
     .pipe(plugins.autoprefixer('last 1 Chrome version', 'last 3 iOS versions', 'last 3 Android versions'))
     .pipe(plugins.concat('main.css'))
+    .pipe(minifyCss())
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(plugins.if(build && !emulate, plugins.rev()))
     .pipe(gulp.dest(path.join(targetDir, 'styles')))
