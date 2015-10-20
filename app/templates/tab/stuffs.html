@@ -1,0 +1,27 @@
+<ion-view view-title="Stuff">
+  <ion-content class="padding">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
+    </ion-refresher>
+    <ion-item ng-click="scanStuff(stuff)" class="list card crowd-card" ng-repeat="stuff in stuffs" href="javascript:void(0)">
+
+      <div class="item item-body">
+        <img ng-src="{{ stuff.image_url }}" class="full-image">
+        <div class="sweep-info">
+          <h1>{{ stuff.name }}</h1>
+          <p>{{ stuff.description }}</p>
+          <hr>
+          <a ng-click="saveStuff(stuff)" href="#/tab/stuff/{{stuff.location[0].factual_id}}/{{stuff.location[0].product_store_id}}" class="location">{{ location_text(stuff) }}</a>
+          <p>{{ stuff.distance.toFixed(2) }} MI</p>
+        </div>
+      </div>
+
+    </ion-item>
+    <ion-infinite-scroll ng-if="!stuffDone" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
+    <div ng-show="hasError()" class="item item-text-wrap">
+      {{ error }}
+    </div>
+    <div ng-show="noLocation()" class="item item-text-wrap">
+      Whoops we can't get your location. Please turn on GPS in your phones settings.
+    </div>
+  </ion-content>
+</ion-view>

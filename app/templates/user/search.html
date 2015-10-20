@@ -1,0 +1,17 @@
+<ion-view view-title="Search Result">
+  <ion-content class="padding">
+    <div class="list">
+      <div class="item item-avatar" ng-repeat="user in users">
+        <img ng-src="{{ user.image_url }}">
+        <div class="row">
+          <a class="col col-75" href="#/tab/user/profile/{{ user.id }}"><h2>{{ user.first_name }} {{ user.last_name }}</h2><p>{{ user.username }}</p></a>
+          <div class="col">
+            <button class="button button-positive button-small" ng-click="follow(user.id)" ng-show="user.follow_flag == '0'">Follow</button>
+            <button class="button button-positive button-small" ng-click="follow(user.id)" ng-show="user.follow_flag == '1'">Unfollow</button>
+          </div>
+        </div>
+        </img>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

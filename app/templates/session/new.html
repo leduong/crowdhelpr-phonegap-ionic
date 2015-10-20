@@ -1,0 +1,23 @@
+<ion-view cache-view="false" ng-controller="SessionCtrl" view-title="Sign In">
+    <ion-content class="padding">
+        <form name="form" novalidate role="form">
+            <a class="button button-full" ng-href="#/session/register">Register</a>
+            <button class="button button-positive button-full" ng-click="fbLogin()"><i class="ion-social-facebook"></i> Sign In with facebook</button>
+            <div class="list">
+                <label class="item item-input"><input ng-model="data.email" placeholder="Email" required type="email"/></label>
+                <label class="item item-input"><input ng-model="data.password" placeholder="Password" required type="password"/></label>
+                <validation-dir field="data.error">
+                </validation-dir>
+            </div>
+            <button class="button button-calm button-full" ng-click="signIn()" ng-disabled="form.$invalid">Login</button>
+            <a class="button button-full" ng-href="#/session/reset">Reset Password</a>
+            <div class="item item-text-wrap center-text">
+                by using crowdhelpr you agree to our
+                <br/>
+                <a ng-href="#/session/terms">terms of service</a>
+                and
+                <a ng-href="#/session/privacy">privacy policy</a>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

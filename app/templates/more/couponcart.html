@@ -1,0 +1,14 @@
+<ion-view view-title="Coupon Cart">
+  <ion-content class="padding">
+    <div class="card">
+      <div class="item item-image">
+        <p class="center">Scan Here To Apply Savings</p>
+        <img ng-src="{{user.barcode_image_url}}" class="image-full" />
+        <p class="center">{{ user.barcode }}</p>
+      </div>
+    </div>
+    <ion-item class="list card crowd-card crowd-feed" ng-repeat="cart in carts">
+    <ion-infinite-scroll ng-if="!cartDone" on-infinite="loadMore()" distance="0%"></ion-infinite-scroll>
+    </ion-item>
+  </ion-content>
+</ion-view>

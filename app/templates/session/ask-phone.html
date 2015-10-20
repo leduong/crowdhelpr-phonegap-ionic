@@ -1,0 +1,26 @@
+<ion-view cache-view="false" view-title="Verify your Account">
+    <ion-content class="padding">
+        <ion-item class="item item-text-wrap">
+            <form name="form" novalidate role="form">
+                <p class="center-text">
+                    Crowdhelpr will send you a verification code to make sure you are Human.        Carrier SMS charges may apply.
+                </p>
+                <br>
+                    <p class="center-text">
+                        Your country code and phone number
+                        <div class="row">
+                            <label class="col-25 item item-input"><input ng-model="data.country_code" placeholder="CC" type="number"/></label>
+                            <label class="col-75 item item-input"><input ng-model="data.phone_no" placeholder="Phone Number" type="number"/></label>
+                        </div>
+                        <div class="row">
+                            <button class="button button-block button-calm col" ng-click="sendCode(data)" ng-disabled="form.$invalid">Continue</button>
+                        </div>
+                        <div class="row">
+                            <button class="button button-block button-assertive col" ng-click="log_out()">Back</button>
+                        </div>
+                    </p>
+                </br>
+            </form>
+        </ion-item>
+    </ion-content>
+</ion-view>

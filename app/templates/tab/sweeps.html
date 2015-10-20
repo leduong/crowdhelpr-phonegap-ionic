@@ -1,0 +1,29 @@
+<ion-view view-title="Sweeps">
+  <ion-nav-buttons side="left">
+    <button ng-click="switchSweep()" ng-hide="hideBtn" class="button">{{ currentSweep }}</button>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
+    </ion-refresher>
+    <ion-item class="list card crowd-card" ng-click="saveSweep(sweep)" ng-repeat="sweep in sweeps" href="#/tab/sweep/{{ sweep.id }}">
+
+      <div class="item item-body">
+        <img ng-src="{{ sweep.image_url }}" class="full-image">
+        <div class="sweep-info row">
+          <div class="col">
+            <h3>{{ sweep.charity_title }}</h3>
+            <p>{{ sweep.title }}</p>
+          </div>
+          <div class="col-15">
+            <i style="font-size: 70px;" class="ion-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+
+    </ion-item>
+    <ion-infinite-scroll ng-if="!sweepDone" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
+    <div ng-show="hasError()" class="item item-text-wrap">
+      {{ error }}
+    </div>
+  </ion-content>
+</ion-view>

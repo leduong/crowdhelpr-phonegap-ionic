@@ -1,0 +1,27 @@
+<ion-view cache-view="false" view-title="Register">
+    <ion-content class="padding">
+        <form name="form" novalidate role="form">
+            <div class="list">
+                <label class="item item-input"><input ng-model="data.first_name" placeholder="First Name" required type="text"/></label>
+                <validation-dir field="data.error.first_name">
+                </validation-dir>
+                <label class="item item-input"><input ng-model="data.last_name" placeholder="Last Name" required type="text"/></label>
+                <validation-dir field="data.error.last_name">
+                </validation-dir>
+                <label class="item item-input"><input ng-model="data.user_name" placeholder="User Name" required type="text"/></label>
+                <validation-dir field="data.error.user_name">
+                </validation-dir>
+                <label class="item item-input"><input ng-model="data.email" placeholder="Email" required type="email"/></label>
+                <validation-dir field="data.error.email">
+                </validation-dir>
+                <label class="item item-input"><input ng-model="data.password" placeholder="Password" required type="password"/></label>
+                <validation-dir field="data.error.password">
+                </validation-dir>
+                <label class="item item-input"><input ng-model="data.password_confirmation" placeholder="Password Confirmation" required type="password"/></label>
+                <validation-dir field="data.error.password_confirmation">
+                </validation-dir>
+                <button class="button button-positive button-full" ng-click="signUp()" ng-disabled="form.$invalid">Sign Up</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

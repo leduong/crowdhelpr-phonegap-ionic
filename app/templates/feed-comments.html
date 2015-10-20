@@ -1,0 +1,28 @@
+<ion-view view-title="Feed Comment">
+  <ion-content class="padding">
+    <ion-item class="list card crowd-card crowd-feed detail crowd-comment">
+      <div class="item item-avatar">
+        <img ng-src="{{ feed.user_image_url }}">
+        <h2>{{ feed.user_name }}</h2>
+        <p>{{ feed.created_at | date }}</p>
+      </div>
+      <div class="item item-body">
+        <img class="full-image" ng-src="{{ feed.image_url }}">
+      </div>
+      <div class="item item-avatar" ng-repeat="comment in feed.comments">
+        <img ng-src="{{ comment.user_image_url }}">
+        <h2>{{ comment.user_name }}</h2>
+        <p>{{ comment.description }}</p>
+        <span class="absolute-top-right" am-time-ago='comment.created_at'></span>
+        <a class="ion-trash-a absolute-bottom-right" ng-click="removeComment(comment.id)" ng-show="comment.user_id == current_user.id" href="javascript:void(0)"></a>
+      </div>
+    </ion-item>
+  </ion-content>
+  <div class="item item-avatar fixed-bottom-full-width">
+    <img ng-src="{{ current_user.image_url }}">
+    <label class="item item-input">
+      <textarea ng-model="usercomment" placeholder="Comment"></textarea>
+    </label>
+    <a href="javascript:void(0)" ng-click="sendComment(usercomment)" class="button button-clear button-positive">Send</a>
+  </div>
+</ion-view>

@@ -1,0 +1,12 @@
+<ion-view cache-view="false" view-title="Reset Password">
+    <ion-content class="padding">
+        <form name="form" novalidate role="form">
+            <div class="list">
+                <label class="item item-input"><input ng-model="data.email" placeholder="Email" required type="email"/></label>
+                <validation-dir field="data.error">
+                </validation-dir>
+            </div>
+            <button class="button button-calm button-full" ng-click="resetPassword(data)" ng-disabled="form.$invalid">Send Instruction</button>
+        </form>
+    </ion-content>
+</ion-view>
