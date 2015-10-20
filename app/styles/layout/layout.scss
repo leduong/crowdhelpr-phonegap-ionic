@@ -3,3 +3,152 @@
   width: 100%;
   padding: 20px 0;
 }
+
+.img-responsive {
+  height: 15vh;
+}
+
+.item .row {
+  padding-top: 0;
+  text-decoration: none;
+  .col {
+    padding-top: 0;
+    text-decoration: none;
+  }
+}
+
+.remove-link {
+  float: right;
+  color: #000000;
+  text-decoration: none;
+  i.ion-ios-trash-outline {
+    display: none;
+  }
+  &:hover i.ion-ios-trash-outline, &:active i.ion-ios-trash-outline {
+    display: inline;
+  }
+  &:hover i.ion-ios-trash, &:active i.ion-ios-trash {
+    display: none;
+  }
+}
+
+.require-field {
+  display: block;
+  height: 24px;
+  text-align: center;
+  padding: 0;
+  line-height: 24px;
+  position: inherit;
+}
+
+.blue {
+  color: #1000FF;
+}
+
+.donation-button {
+  position: absolute;
+  bottom: 47px;
+  left: 0;
+  right: 0;
+  a {
+    min-height: 37px;
+    line-height: 30px;
+  }
+}
+
+.fixed-bottom-full-width {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+}
+
+.absolute-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  font-size: 14px;
+}
+
+.absolute-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 16px;
+  font-size: 14px;
+  color: #000;
+}
+
+.item-avatar.edit-profile {
+  padding-left: 16px;
+  text-align: center;
+  img {
+    position: initial;
+  }
+}
+
+.center-text {
+  text-align: center;
+}
+
+.display-block {
+  display: block;
+}
+
+.padding {
+  padding: 0;
+}
+
+.list:last-child.crowd-comment {
+  margin-bottom: 90px;
+}
+
+.crowd-feed {
+  padding-right: 0;
+  min-height: 400px;
+  .item-body {
+    padding: 0;
+    text-align: center;
+  }
+  &.detail .item-body {
+    overflow: hidden;
+    height: 200px;
+  }
+}
+
+.crowd-card {
+  margin-top: 0;
+  margin-bottom: 0;
+  .item-content {
+    padding: 0;
+    .item-body {
+      padding: 0;
+      img {
+        min-height: 80vh;
+      }
+      .sweep-info {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 16px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        h3 {
+          color: #FF7F02;
+        }
+        a.location {
+          color: #FF7F02;
+          text-decoration: none;
+        }
+        h1, p {
+          color: #fff;
+          margin: 0;
+        }
+        hr {
+          border-color: #fff;
+        }
+      }
+    }
+  }
+}
