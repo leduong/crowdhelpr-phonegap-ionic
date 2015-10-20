@@ -36,10 +36,10 @@ The source code lives inside the `app` folder.
 
 | Source Files  | Location |
 | ------------- | ------------- |
-| Javascript    | `app/scripts`  |
+| Javascript    | `app/js`  |
 | Styles (scss) | `app/styles`  |
 | Templates     | `app/templates`  |
-| Images        | `app/images`  |
+| Images        | `app/img`  |
 | Fonts         | `app/fonts`  |
 | Icons         | `app/icons`  |
 

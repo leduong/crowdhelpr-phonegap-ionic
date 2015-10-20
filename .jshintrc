@@ -3,7 +3,7 @@
   "browser": true,
   "esnext": true,
   "bitwise": true,
-  "camelcase": true,
+  "camelcase": false,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
@@ -28,6 +28,8 @@
     "navigator": false,
     "launchnavigator": false,
     "Camera": false,
+    "FileTransfer": false,
+    "FileUploadOptions": false,
     "FacebookInAppBrowser": false,
     "StatusBar": false
   }

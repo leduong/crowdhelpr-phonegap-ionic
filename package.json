@@ -2,6 +2,11 @@
   "name": "crowdhelpr_app",
   "version": "1.0.0",
   "author": "Crowdhelpr Team <diisles@gmail.com>",
+  "license": "Private",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/leduong/crowdhelpr-phonegap-ionic.git"
+  },
   "description": "",
   "dependencies": {},
   "devDependencies": {
@@ -21,6 +26,7 @@
     "gulp-if": "^1.2.5",
     "gulp-inject": "^1.1.1",
     "gulp-jshint": "^1.9.0",
+    "gulp-less": "^3.0.3",
     "gulp-livereload": "^3.7.0",
     "gulp-load-plugins": "^0.8.0",
     "gulp-ng-annotate": "^0.5.0",
@@ -46,5 +52,33 @@
   },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp"
-  }
+  },
+  "readme": "FIX: No README data found!",
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "com.ionic.keyboard",
+    "cordova-plugin-file",
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-sim",
+    "nl.x-services.plugins.socialsharing",
+    "org.apache.cordova.inappbrowser",
+    "phonegap-plugin-barcodescanner", {
+      "locator": "https://github.com/phonegap-build/PushPlugin.git",
+      "id": "com.phonegap.plugins.PushPlugin"
+    }, {
+      "locator": "https://github.com/evothings/phonegap-estimotebeacons.git",
+      "id": "cordova-plugin-estimote"
+    }, {
+      "locator": "https://github.com/dpa99c/phonegap-launch-navigator.git",
+      "id": "uk.co.workingedge.phonegap.plugin.LaunchNavigator"
+    }
+  ],
+  "cordovaPlatforms": [
+    "ios",
+    "android"
+  ]
 }

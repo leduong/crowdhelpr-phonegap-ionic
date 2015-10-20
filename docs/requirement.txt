@@ -1,0 +1,23 @@
+Also I will be adding this to your tasks on trello in a little bit.
+1) The ability to show or not show the amount raised in a Sweep campaign. This is now built into Backend so if you need the api for this ask joke to give it to you.
+Basically it allows us to show the amount of money a Sweep campaign raised or to not show it. Check iPhone app in Sweep detail page to see example of showing of amount raised.
+
+Hi
+Can you get online and discuss the app with me. I need you to fully understand the app and features.
+Crowdhelpr is a crowdfunding app like kickstarter.com combined with omaze.com. We allow anyone to create a sweep campaign where they ask users to help them raise funds for a cause or idea.
+The difference with crowdhelpr is that every sweep campaign created must have a prize that users will win. How users enter to win the prize is by contributing dollars to the Sweep Campaign. For every dollar donated the user gets a entry ticket into winning the sweepstakes prize. If a user contributes $10 they get 10 chances(entries) into winning that prize. If a user gives $5 then they get 5 entries, if they give $100 then they get 100 entries into winning the prize. As another way to get more entries into winning we allow users to scan the barcode of the products that appear in our ‘Stuff” tab. IF they scan these products at the locations listed in the stuff tab they get a “crowd coin”(entry). These crowd coins can be turned into entries in the Sweep Campaign of the users choice simply by hitting the “use coins” button in the Sweep detail page.
+Dang the android app does most of the features of the iPhone app, except for a couple things. These things we have outlined in the trello page.
+1)Notification tab, you can ask Ravi exactly what kind of notifications go here. here are a couple examples.
+- this is where all notifications a user gets will go.
+- new @mention
+- new comment
+2)Ping with @name
+- users will get a push notification when their name has been mentioned (@Dang) just like is in trello. For a user to do this they simply hit the @ key and then start typing the users name, then a list comes up of matching names and the user taps the name they want.
+3)video playback. In the Feed there needs to be video playback of video posts posted by users like in iPhone app. Ask Ravi if you have questions.
+4)Add Countdown clock. There should be a countdown clock in the Sweep details area of each Sweep Campaign. this clock counts down to 00:00:00 at this moment the Campaign ends and a winner/s is picked. Check iPhone app to see example.
+
+Estimote. Please ask Ravi about this. I have explained to you before about what the estimote able beacons do. We can put these beacons in stores and when a user walks by the beacon the  beacon sends a push notification to the user. this message can be a welcome message or info about a certain product or a chance for user to scan the product to get a coupon.
+
+Please message me in Skype once you read this and ask me questions.
+
+-David
