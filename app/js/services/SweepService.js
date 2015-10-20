@@ -1,6 +1,8 @@
 'use strict';
 angular.module('CrowdhelprApp').
-factory('SweepService', ['$http', 'API', function($http, API) {
+factory('SweepService', [
+  '$http', 'API',
+  function($http, API) {
     var exports;
     exports = {
       enterCampaign: function(params) {

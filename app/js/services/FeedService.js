@@ -1,6 +1,8 @@
 'use strict';
 angular.module('CrowdhelprApp').
-factory('FeedService', ['$http', 'API', function($http, API) {
+factory('FeedService', [
+  '$http', 'API',
+  function($http, API) {
     var exports;
     exports = {
       postComment: function(params) {
