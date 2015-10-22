@@ -1,4 +1,5 @@
-<ion-view view-title="Stuff Detail"> <ion-content class="padding">
+<ion-view view-title="Stuff Detail">
+  <ion-content class="padding">
     <div class="card">
       <div class="item item-text-wrap">
         <map center="{{ my_lat }},{{ my_lng }}" zoom="18">
@@ -6,18 +7,16 @@
           <marker id="marker_{{$index}}" ng-repeat="loc in stuff.location" ng-click="showInfoWindow(event,'bar_{{$index}}');" position="{{ loc.lat }},{{ loc.lng }}"></marker>
         </map>
         <h3 style="margin-top: 10px;">{{ location.store_name }}</h3>
-        <hr>
-        {{ location.address }}
+        <hr> {{ location.address }}
         <br/>
         <a ng-click="navigate(location.lat, location.lng)" class="button button-energized button-block">Get Direction</a>
         <div ng-repeat="loc in stuff.location">
           <h3 style="margin-top: 10px;">{{ loc.store_name }}</h3>
-          <hr>
-          {{ loc.address }}
+          <hr> {{ loc.address }}
           </br>
           <a ng-click="navigate(loc.lat, loc.lng)" class="button button-energized button-block">Get Direction</a>
         </div>
       </div>
     </div>
   </ion-content>
-  </ion-view>
+</ion-view>

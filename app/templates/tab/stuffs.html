@@ -3,7 +3,6 @@
     <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
     </ion-refresher>
     <ion-item ng-click="scanStuff(stuff)" class="list card crowd-card" ng-repeat="stuff in stuffs" href="javascript:;">
-
       <div class="item item-body">
         <img ng-src="{{ stuff.image_url }}" class="full-image">
         <div class="sweep-info">
@@ -14,7 +13,6 @@
           <p>{{ stuff.distance.toFixed(2) }} MI</p>
         </div>
       </div>
-
     </ion-item>
     <ion-infinite-scroll ng-if="!stuffDone" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
     <div ng-show="hasError()" class="item item-text-wrap">

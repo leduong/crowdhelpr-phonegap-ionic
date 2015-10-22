@@ -21,15 +21,38 @@ angular.module('CrowdhelprApp', [
   'youtube-embed'
 ])
 
-.run(['$ionicPlatform', function($ionicPlatform) {
+.run([
+  '$ionicPlatform', '$cordovaPush', '$localStorage',
+  function($ionicPlatform, $cordovaPush, $localStorage) {
+    $ionicPlatform.ready(function() {
+      var config = null;
+      if (ionic.Platform.isAndroid()) {
+        config = {
+          'senderID': '644395022072'
+        };
+      } else if (ionic.Platform.isIOS()) {
+        config = {
+          'badge': 'true',
+          'sound': 'true',
+          'alert': 'true'
+        };
+      }
 
-  $ionicPlatform.ready(function() {
-    // save to use plugins here
-  });
+      $cordovaPush.register(config).then(function(result) {
+        // console.log('Register success ' + result);
+        if (ionic.Platform.isIOS()) {
+          $localStorage.push_token = result;
+        }
+      }, function(err) {
+        console.log('Register error ' + err);
+      });
 
-  // add possible global event handlers here
+    });
 
-}])
+    // add possible global event handlers here
+
+  }
+])
 
 .run([
   '$rootScope', '$ionicLoading',
@@ -92,9 +115,11 @@ angular.module('CrowdhelprApp', [
           if (res.headers()['content-type'] === 'application/json' || res.headers()['content-type'] === 'application/json; charset=utf-8') {
             if (res.data.status_code !== 1 && res.data.status_code !== 'parameters not set') {
               resetToken();
-              $location.path('/session/new');
+              // $location.path('/session/new');
             }
-
+            if (res.data.status_code === 0) {
+              $rootScope.$broadcast('$cordovaToast:notification', res.data.message || 'Bad request!');
+            }
           }
           //   console.log(res);
           $rootScope.$broadcast('loading:hide');
@@ -104,24 +129,24 @@ angular.module('CrowdhelprApp', [
         responseError: function(rejection) {
           if (rejection.status === 400) {
             if (rejection.headers()['content-type'] === 'application/json' || rejection.headers()['content-type'] === 'application/json; charset=utf-8') {
-              $rootScope.$broadcast('warning', rejection.data.message || 'Bad request!');
+              $rootScope.$broadcast('$cordovaToast:notification', rejection.data.message || 'Bad request!');
               return $q.resolve(rejection);
             }
           }
 
           if (rejection.status === 401) {
             resetToken();
-            $rootScope.$broadcast('warning', rejection.data.message || 'Unauthorized!');
+            $rootScope.$broadcast('$cordovaToast:notification', rejection.data.message || 'Unauthorized!');
             $location.path('/');
           }
 
           if (rejection.status === 403) {
-            $rootScope.$broadcast('warning', rejection.data.message || 'Forbidden!');
+            $rootScope.$broadcast('$cordovaToast:notification', rejection.data.message || 'Forbidden!');
           }
 
           if (rejection.status === 500) {
             var errorMessage = 'Error 500: ' + rejection.data.message;
-            $rootScope.$broadcast('error', errorMessage);
+            $rootScope.$broadcast('$cordovaToast:notification', errorMessage);
             return $q.reject(rejection);
           }
           $rootScope.$broadcast('loading:hide');
@@ -139,15 +164,15 @@ config([
     state('session', {
       url: '/session',
       abstract: true,
-      templateUrl: 'templates/session/index.html'
+      templateUrl: 'templates/session/index.html',
+      controller: 'SessionCtrl'
     }).
 
     state('session.new', {
       url: '/new',
       views: {
         'session-new': {
-          templateUrl: 'templates/session/new.html',
-          controller: 'SessionCtrl'
+          templateUrl: 'templates/session/new.html'
         }
       }
     }).
@@ -156,8 +181,7 @@ config([
       url: '/reset',
       views: {
         'session-new': {
-          templateUrl: 'templates/session/reset.html',
-          controller: 'SessionCtrl'
+          templateUrl: 'templates/session/reset.html'
         }
       }
     }).
@@ -166,8 +190,7 @@ config([
       url: '/register',
       views: {
         'session-new': {
-          templateUrl: 'templates/session/register.html',
-          controller: 'SessionCtrl'
+          templateUrl: 'templates/session/register.html'
         }
       }
     }).
@@ -176,8 +199,7 @@ config([
       url: '/ask-phone',
       views: {
         'session-new': {
-          templateUrl: 'templates/session/ask-phone.html',
-          controller: 'SessionCtrl'
+          templateUrl: 'templates/session/ask-phone.html'
         }
       }
     }).
@@ -186,8 +208,7 @@ config([
       url: '/verify-phone',
       views: {
         'session-new': {
-          templateUrl: 'templates/session/verify.html',
-          controller: 'SessionCtrl'
+          templateUrl: 'templates/session/verify.html'
         }
       }
     }).
@@ -216,7 +237,8 @@ config([
     state('tab', {
       url: '/tab',
       abstract: true,
-      templateUrl: 'templates/tab/index.html'
+      templateUrl: 'templates/tab/index.html',
+      controller: 'TabCtrl'
     }).
 
     // Each tab has its own nav history stack:
@@ -225,8 +247,7 @@ config([
       url: '/post',
       views: {
         'tab-scan': {
-          templateUrl: 'templates/tab/post.html',
-          controller: 'PostCtrl'
+          templateUrl: 'templates/tab/post.html'
         }
       }
     }).

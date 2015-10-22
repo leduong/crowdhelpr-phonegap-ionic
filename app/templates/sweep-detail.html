@@ -4,15 +4,14 @@
     <button ng-click="showActionSheets()" class="button"><i class="ion-android-more-horizontal"></i></button>
   </ion-nav-buttons>
   <ion-content class="padding">
-
     <div class="item item-body">
       <h2 class="text-center">{{ sweep.title }}</h2>
       <p class="text-center">
         Benefiting
         <div class="button button-energized display-block">{{ sweep.charity_title }}</div>
-        <hr>
+        <hr/>
         <youtube-video video-id="videoId" player-width="'100%'"></youtube-video>
-        <hr ng-hide="{{videoId == null}}">
+        <hr ng-hide="{{videoId == null}}" />
         <h3 class="text-center">TIME LEFT</h3>
         <p class="text-center"><strong>Raised {{ sweep.fund_raised | currency }} of {{ sweep.fund_goal | currency }} goal</strong></p>
         <h3>Sweep</h3>
@@ -21,7 +20,6 @@
         <p ng-bind-html="sweep.charity_info"></p>
       </p>
     </div>
-
   </ion-content>
   <div class="donation-button row">
     <a href="javascript:;" class='button button-energized col-33' ng-click="useCoin(sweep)">Use Coins</a>

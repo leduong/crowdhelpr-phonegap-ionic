@@ -1,24 +1,26 @@
 <ion-view cache-view="false" view-title="Verify your Account">
-    <ion-content class="padding">
-        <ion-item class="item item-text-wrap">
-            <form name="form" novalidate role="form">
-                <p class="center-text">
-                    Enter Verification Code
-                </p>
-                <br/>
-                <p class="center-text">
-                    Please enter verification code from message
-                    <div class="row">
-                        <label class="col item item-input"><input ng-model="data.phone_code" placeholder="Verification Code" type="text"/></label>
-                    </div>
-                    <div class="row">
-                        <button class="button button-block button-calm col" ng-click="verify(data)" ng-disabled="form.$invalid">Continue </button>
-                    </div>
-                    <div class="row">
-                        <button class="button button-block button-assertive col" ng-click="log_out()">Back </button>
-                    </div>
-                </p>
-            </form>
-        </ion-item>
-    </ion-content>
+  <ion-content class="padding">
+    <ion-item class="item item-text-wrap">
+      <form name="form" novalidate role="form">
+        <p class="center-text">
+          Enter Verification Code
+        </p>
+        <br/>
+        <p class="center-text">
+          Please enter verification code from message
+          <div class="row">
+            <label class="col item item-input">
+              <input ng-model="data.phone_code" placeholder="Verification Code" type="text" />
+            </label>
+          </div>
+          <div class="row">
+            <button class="button button-block button-calm col" ng-click="verify(data)" ng-disabled="form.$invalid">Continue </button>
+          </div>
+          <div class="row">
+            <button class="button button-block button-assertive col" ng-click="log_out()">Back </button>
+          </div>
+        </p>
+      </form>
+    </ion-item>
+  </ion-content>
 </ion-view>

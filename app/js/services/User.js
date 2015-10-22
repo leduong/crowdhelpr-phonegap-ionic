@@ -89,21 +89,23 @@ factory('User', [
     };
 
     User.prototype.signUp = function(params) {
+      params.push_token = $localStorage.push_token;
       if (this.busy) {
         return;
       }
       this.busy = true;
       var _this = this;
-      return UserService.register(params).then(function(data) {
+      return UserService.register(params).then(function(res) {
         _this.busy = false;
-        if (data.status_code === 1) {
-          $localStorage.token = data.token;
-          $localStorage.current_user = data.user;
+        if (res.data.status_code === 1) {
+          $localStorage.token = res.data.token;
+          $localStorage.current_user = res.data.user;
           $state.go('tab.sweep');
         } else {
-          _this.validate(data.message, params);
+          _this.validate(res.data.message, params);
         }
-        return data || null;
+        var result = res.data.result || {};
+        return result;
       });
     };
 
@@ -144,6 +146,7 @@ factory('User', [
     };
 
     User.prototype.signIn = function(params) {
+      params.push_token = $localStorage.push_token;
       var _this = this;
       if (_this.busy) {
         return;

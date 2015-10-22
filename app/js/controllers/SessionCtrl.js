@@ -2,13 +2,16 @@
 
 angular.module('CrowdhelprApp').
 
-controller('SessionCtrl', ['$rootScope', '$ionicPush', '$scope', 'User', 'countryCode', '$ionicPopup', '$localStorage', '$state', '$ionicLoading', '$ionicHistory',
+controller('SessionCtrl', [
+  '$rootScope', '$ionicPush', '$scope', 'User', 'countryCode', '$ionicPopup', '$localStorage', '$state', '$ionicLoading', '$ionicHistory',
   function($rootScope, $ionicPush, $scope, User, countryCode, $ionicPopup, $localStorage, $state, $ionicLoading, $ionicHistory) {
-    $scope.data = {};
+    $scope.data = {
+      push_token: $localStorage.push_token
+    };
     var user = new User();
 
     $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
-      alert('Successfully registered token ' + data.token);
+      console.log('Successfully registered token ' + data.token);
     });
 
     $scope.signUp = function() {

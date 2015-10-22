@@ -67,10 +67,10 @@ controller('StuffCtrl', ['$scope', '$ionicLoading', 'Stuffs', '$localStorage', '
   };
 
   $scope.locationText = function(stuff) {
-    if (stuff.location.length > 1) {
+    if (stuff.location !== undefined && stuff.location.length > 1) {
       return '@Multi Locations';
     } else {
-      return stuff.location[0].store_name;
+      return stuff.location[0].store_name || '';
     }
   };
 

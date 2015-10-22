@@ -1,31 +1,28 @@
 <ion-view view-title="More" cache-view="false">
   <ion-content class="padding">
     <div class="list">
-
-        <a class="item item-thumbnail-left" href="javascript:;">
-          <img src="{{ user.image_url }}">
-          <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-          <p>{{ user.email }}</p>
-          <p>You have {{ user.good_coins_available }} Crowd Coins to use</p>
-        </a>
-
-        <a class="item" href="#/tab/coupon">Coupon Cart</a>
-        <a class="item" href="#/tab/leaderboard">Leaderboard</a>
-        <!--
+      <a class="item item-thumbnail-left" href="javascript:;">
+        <img src="{{ user.image_url }}">
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <p>{{ user.email }}</p>
+        <p>You have {{ user.good_coins_available }} Crowd Coins to use</p>
+      </a>
+      <a class="item" href="#/tab/coupon">Coupon Cart</a>
+      <a class="item" href="#/tab/leaderboard">Leaderboard</a>
+      <!--
         <a class="item" href="#">Notifications</a>
         <a class="item" href="#">Invite Friends</a>
         -->
-        <a class="item" href="#/tab/edit/profile">Edit Profile</a>
-        <!--
+      <a class="item" href="#/tab/edit/profile">Edit Profile</a>
+      <!--
         <a class="item" href="#">Tutor</a>
         -->
-        <a class="item" href="#/tab/terms">Terms & Conditions</a>
-        <a class="item" href="#/tab/rules">Official Rules</a>
-        <a class="item" href="#/tab/privacy">Privacy Policy</a>
-        <a class="item" href="#/tab/free-entry">Free Entry Methods</a>
-        <!-- <a class="item" href="#">Contact/Supports</a> -->
-        <a class="item" href="javascript:;" ng-click="logOut()">Log Out</a>
-
+      <a class="item" href="#/tab/terms">Terms & Conditions</a>
+      <a class="item" href="#/tab/rules">Official Rules</a>
+      <a class="item" href="#/tab/privacy">Privacy Policy</a>
+      <a class="item" href="#/tab/free-entry">Free Entry Methods</a>
+      <!-- <a class="item" href="#">Contact/Supports</a> -->
+      <a class="item" href="javascript:;" ng-click="logOut()">Log Out</a>
     </div>
   </ion-content>
 </ion-view>

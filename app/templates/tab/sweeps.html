@@ -6,7 +6,6 @@
     <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
     </ion-refresher>
     <ion-item class="list card crowd-card" ng-click="saveSweep(sweep)" ng-repeat="sweep in sweeps" href="#/tab/sweep/{{ sweep.id }}">
-
       <div class="item item-body">
         <img ng-src="{{ sweep.image_url }}" class="full-image">
         <div class="sweep-info row">
@@ -19,7 +18,6 @@
           </div>
         </div>
       </div>
-
     </ion-item>
     <ion-infinite-scroll ng-if="!sweepDone" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
     <div ng-show="hasError()" class="item item-text-wrap">

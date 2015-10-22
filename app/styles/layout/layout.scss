@@ -4,6 +4,12 @@
   padding: 20px 0;
 }
 
+.view-container {
+  background-color: #eee;
+}
+.pane{
+  background-color: transparent;
+}
 .img-responsive {
   height: 15vh;
 }
@@ -24,10 +30,12 @@
   i.ion-ios-trash-outline {
     display: none;
   }
-  &:hover i.ion-ios-trash-outline, &:active i.ion-ios-trash-outline {
+  &:hover i.ion-ios-trash-outline,
+  &:active i.ion-ios-trash-outline {
     display: inline;
   }
-  &:hover i.ion-ios-trash, &:active i.ion-ios-trash {
+  &:hover i.ion-ios-trash,
+  &:active i.ion-ios-trash {
     display: none;
   }
 }
@@ -105,15 +113,45 @@
 }
 
 .crowd-feed {
-  padding-right: 0;
+  padding: 0;
+  margin: 0 0 20px 0;
   min-height: 400px;
+  position: relative;
+  .item-avatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    z-index: 999999;
+    border: none;
+    h2 {
+      color: #fff
+    }
+  }
   .item-body {
     padding: 0;
-    text-align: center;
+  }
+  .tabs {
+    position: absolute;
+    bottom: 55px;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 999999;
+    border: none;
+    .tab-item{
+      font-size: 12px;
+    }
   }
   &.detail .item-body {
     overflow: hidden;
     height: 200px;
+  }
+  p{
+    padding: 15px;
   }
 }
 
@@ -141,7 +179,8 @@
           color: #FF7F02;
           text-decoration: none;
         }
-        h1, p {
+        h1,
+        p {
           color: #fff;
           margin: 0;
         }

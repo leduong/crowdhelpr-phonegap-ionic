@@ -1,19 +1,18 @@
 <ion-view view-title="Profile">
   <ion-content class="padding">
-    <div ng-hide="user == null" class="list">
-
+    <div class="list" ng-hide="user == null">
       <div class="item item-thumbnail-left">
-        <img src="{{ user.image_url }}">
-        <h2>{{ user.full_name }}</h2>
-        <p>{{ user.email }} {{ follow_flag }}</p>
-        <button ng-click="follow(user.id)" ng-show="user.follow_flag == '0'" class="button button-positive button-small">Follow</button>
-        <button ng-click="follow(user.id)" ng-show="user.follow_flag == '1'" class="button button-positive button-small">Unfollow</button>
+        <img src="{{ user.image_url }}" />
+        <h2 ng-bind="user.full_name"></h2>
+        <p>
+          {{ user.email }} {{ follow_flag }}
+        </p>
+        <button class="button button-positive button-small" ng-click="follow(user.id)">{{ (user.follow_flag == '0') ? "Follow" : "Unfollow" }}</button>
       </div>
-
       <div class="row" ng-repeat="feed in userfeeds">
-        <img ng-repeat="f in feed" ng-src="{{ f.image_url }}" class="col-33 img-responsive">
+        <img class="col-33 img-responsive" ng-repeat="f in feed" ng-src="{{ f.image_url }}">
+        </img>
       </div>
-
     </div>
   </ion-content>
 </ion-view>

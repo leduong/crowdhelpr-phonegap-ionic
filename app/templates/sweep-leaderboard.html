@@ -1,8 +1,8 @@
-<ion-view view-title="Leaderboard" cache-view="false">
+<ion-view cache-view="false" view-title="Leaderboard">
   <ion-content class="padding">
     <div class="list">
-      <a href="javascript:;" ng-repeat="item in users" class="item item-avatar">
-        <img ng-src="{{ item.user.image_url }}">
+      <a class="item item-avatar" href="javascript:;" ng-repeat="item in users">
+        <img ng-src="{{ item.user.image_url }}" />
         <h2>{{ item.user.first_name }} {{ item.user.last_name }}</h2>
         <p>{{ item.coins }} Points</p>
       </a>
