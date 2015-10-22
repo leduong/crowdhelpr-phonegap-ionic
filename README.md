@@ -16,6 +16,17 @@ npm install
 bower install
 ```
 
+Next, send the API key to ionic.io:
+
+```bash
+ionic push --google-api-key your-google-api-key
+```
+
+Hooking up ionic.io
+```bash
+ionic config set gcm_key <your-gcm-project-number>
+```
+
 to build app.
 ```bash
 gulp -b

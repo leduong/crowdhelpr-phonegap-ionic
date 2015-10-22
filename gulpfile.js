@@ -148,14 +148,6 @@ gulp.task('scripts', function() {
   .on('error', errorHandler);
 });
 
-// copy libs
-gulp.task('libs', function() {
-  return gulp
-    .src('app/libs/*.*')
-    .pipe(gulp.dest(path.join(targetDir, 'libs')))
-    .on('error', errorHandler);
-});
-
 // copy fonts
 gulp.task('fonts', function() {
   return gulp
@@ -351,7 +343,6 @@ gulp.task('default', function(done) {
       'vendor'
     ],
     'index',
-    build ? 'libs' : 'noop',
     build ? 'noop' : 'watchers',
     build ? 'noop' : 'serve',
     emulate ? ['ionic:emulate', 'watchers'] : 'noop',

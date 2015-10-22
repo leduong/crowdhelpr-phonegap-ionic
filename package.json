@@ -61,22 +61,30 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard",
-    "cordova-plugin-file",
     "cordova-plugin-file-transfer",
     "cordova-plugin-geolocation",
     "cordova-plugin-sim",
     "nl.x-services.plugins.socialsharing",
     "org.apache.cordova.inappbrowser",
-    "phonegap-plugin-barcodescanner", {
+    "phonegap-plugin-barcodescanner",
+    {
       "locator": "https://github.com/phonegap-build/PushPlugin.git",
       "id": "com.phonegap.plugins.PushPlugin"
-    }, {
+    },
+    {
       "locator": "https://github.com/evothings/phonegap-estimotebeacons.git",
       "id": "cordova-plugin-estimote"
-    }, {
+    },
+    {
       "locator": "https://github.com/dpa99c/phonegap-launch-navigator.git",
       "id": "uk.co.workingedge.phonegap.plugin.LaunchNavigator"
-    }
+    },
+    {
+      "locator": "https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git",
+      "id": "cordova-plugin-x-toast"
+    },
+    "cordova-plugin-dialogs",
+    "cordova-plugin-camera"
   ],
   "cordovaPlatforms": [
     "ios",

@@ -74,7 +74,7 @@ controller('SweepDetailCtrl', ['$scope', '$stateParams', '$state', 'Sweeps', '$i
       });
       coinPopup.then(function(res) {
         if (res !== undefined) {
-          user_object.fetch_current_user().then(function(data) {
+          user_object.currentUser().then(function(data) {
             $localStorage.current_user = data;
             if (data.good_coins_available < res) {
               $ionicPopup.alert({

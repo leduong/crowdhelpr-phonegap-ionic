@@ -139,11 +139,7 @@ factory('User', [
     };
 
     User.prototype.signOut = function() {
-      $localStorage.$reset({
-        current_user: undefined,
-        token: undefined,
-        http: 'https://www.crowdhelpr.com'
-      });
+      $localStorage.$reset();
       $state.go('session.new');
     };
 
@@ -239,7 +235,7 @@ factory('User', [
       });
     };
 
-    User.prototype.fetch_user_profile = function() {
+    User.prototype.userProfile = function() {
       if (this.busy) {
         return;
       }
@@ -252,7 +248,7 @@ factory('User', [
       });
     };
 
-    User.prototype.fetch_current_user = function() {
+    User.prototype.currentUser = function() {
       if (this.busy) {
         return;
       }
@@ -266,7 +262,7 @@ factory('User', [
       });
     };
 
-    User.prototype.user_carts = function() {
+    User.prototype.myCarts = function() {
       if (this.busy) {
         return;
       }

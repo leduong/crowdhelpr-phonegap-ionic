@@ -31,7 +31,7 @@ controller('SessionCtrl', ['$rootScope', '$ionicPush', '$scope', 'User', 'countr
 
     $scope.sendCode = function(data) {
       user.sendPhoneCode(data).then(function() {
-        user.fetch_current_user().then(function(data) {
+        user.currentUser().then(function(data) {
           $localStorage.current_user = data;
           $state.go('session.verify');
         });
@@ -41,7 +41,7 @@ controller('SessionCtrl', ['$rootScope', '$ionicPush', '$scope', 'User', 'countr
     $scope.verify = function(data) {
       user.verify(data).then(function(res) {
         if (res.status_code === 1) {
-          user.fetch_current_user().then(function(data) {
+          user.currentUser().then(function(data) {
             $localStorage.current_user = data;
             $state.go('tab.sweep', {}, {
               'reload': true
@@ -67,7 +67,7 @@ controller('SessionCtrl', ['$rootScope', '$ionicPush', '$scope', 'User', 'countr
       $ionicLoading.show({
         message: 'Fetching...'
       });
-      user.fetch_current_user().then(function(data) {
+      user.currentUser().then(function(data) {
         if (data === undefined) {
           $localStorage.token = undefined;
         } else {

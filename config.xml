@@ -8,7 +8,8 @@
     Crowdhelpr Team
   </author>
   <content src="index.html"/>
-  <allow-navigation href="https://www.crowdhelpr.com/*"/>
+  <allow-navigation href="https://*/*"/>
+  <allow-navigation href="data:*"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>

@@ -10,7 +10,7 @@
           <h1>{{ stuff.name }}</h1>
           <p>{{ stuff.description }}</p>
           <hr>
-          <a ng-click="saveStuff(stuff)" href="#/tab/stuff/{{stuff.location[0].factual_id}}/{{stuff.location[0].product_store_id}}" class="location">{{ location_text(stuff) }}</a>
+          <a ng-click="saveStuff(stuff)" href="#/tab/stuff/{{stuff.location[0].factual_id}}/{{stuff.location[0].product_store_id}}" class="location">{{ locationText(stuff) }}</a>
           <p>{{ stuff.distance.toFixed(2) }} MI</p>
         </div>
       </div>

@@ -9,7 +9,7 @@ factory('Other', [
       this.busy = false;
     };
 
-    Other.prototype.static_text = function(url) {
+    Other.prototype.staticText = function(url) {
       if (this.busy) {
         return;
       }

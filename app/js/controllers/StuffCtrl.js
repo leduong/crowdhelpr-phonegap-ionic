@@ -8,7 +8,7 @@ controller('StuffCtrl', ['$scope', '$ionicLoading', 'Stuffs', '$localStorage', '
   $scope.stuffDone = false;
   $scope.refresh = false;
   $scope.dontScan = false;
-  var stuff_object = new Stuffs();
+  var stuff = new Stuffs();
 
   geolocation(function() {
     $scope.stuffDone = false;
@@ -20,7 +20,7 @@ controller('StuffCtrl', ['$scope', '$ionicLoading', 'Stuffs', '$localStorage', '
   $scope.loadMore = function() {
     if ($scope.stuffDone === false) {
       $scope.page += 1;
-      stuff_object.paginate($scope.page, 1, $scope.latitude, $scope.longitude).then(function(data) {
+      stuff.paginate($scope.page, 1, $scope.latitude, $scope.longitude).then(function(data) {
         if (data.length < 5) {
           $scope.stuffDone = true;
         } else {
@@ -66,7 +66,7 @@ controller('StuffCtrl', ['$scope', '$ionicLoading', 'Stuffs', '$localStorage', '
     $localStorage.stuff = stuff;
   };
 
-  $scope.location_text = function(stuff) {
+  $scope.locationText = function(stuff) {
     if (stuff.location.length > 1) {
       return '@Multi Locations';
     } else {
@@ -97,7 +97,7 @@ controller('StuffCtrl', ['$scope', '$ionicLoading', 'Stuffs', '$localStorage', '
                   template: 'You have scan different product'
                 });
               } else {
-                stuff_object.scan(result.text, $localStorage.latitude, $localStorage.longitude).then(function(data) {
+                stuff.scan(result.text, $localStorage.latitude, $localStorage.longitude).then(function(data) {
                   $ionicPopup.alert({
                     title: 'Scan Result',
                     template: data.message
