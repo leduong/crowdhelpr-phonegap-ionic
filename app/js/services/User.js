@@ -70,7 +70,7 @@ factory('User', [
       });
     };
 
-    User.prototype.fbSignIn = function(fb_id, params, callback) {
+    User.prototype.fbSignIn = function(fb_id, params) {
       params.fb_id = fb_id;
       params.image_url = 'https://graph.facebook.id/' + fb_id + '/picture';
       if (this.busy) {
@@ -78,14 +78,17 @@ factory('User', [
       }
       this.busy = true;
       var _this = this;
-      return UserService.login(params)
-        .success(function(data) {
-          _this.busy = false;
-          callback(data);
-        })
-        .error(function() {
-          _this.busy = false;
-        });
+      return UserService.signIn(params).then(function(res) {
+        _this.busy = false;
+        console.log(JSON.stringify(res.data));
+        $localStorage.token = res.token;
+        $localStorage.current_user = res.user;
+        if ($localStorage.current_user !== undefined && $localStorage.current_user.phone_verified === null) {
+          $state.go('session.ask-phone-no');
+        } else {
+          $state.go('tab.sweep');
+        }
+      });
     };
 
     User.prototype.signUp = function(params) {
@@ -194,7 +197,7 @@ factory('User', [
         return;
       }
       this.busy = true;
-      var usr = this;
+      var _this = this;
 
       // Settings
       FacebookInAppBrowser.settings.appId = '341918775984223';
@@ -209,21 +212,22 @@ factory('User', [
         denied: function() {
           console.log('user denied');
           $ionicLoading.hide();
-          usr.busy = false;
+          _this.busy = false;
         },
         timeout: function() {
           $ionicLoading.hide();
           console.log('a timeout has occurred, probably a bad internet connection');
-          usr.busy = false;
+          _this.busy = false;
         },
         userInfo: function(userInfo) {
           if (userInfo) {
-            console.log(userInfo);
-            usr.fbSignIn(userInfo.id, userInfo, function(response) {
-              $localStorage.token = response.token;
-              $localStorage.current_user = response.user;
-              usr.busy = false;
-              $ionicLoading.hide();
+            var params = userInfo;
+            params.fb_id = userInfo.id;
+            params.image_url = 'https://graph.facebook.id/' + userInfo.id + '/picture';
+            UserService.signIn(params).then(function(res) {
+              console.log(JSON.stringify(res));
+              $localStorage.token = res.token;
+              $localStorage.current_user = res.user;
               if ($localStorage.current_user !== undefined && $localStorage.current_user.phone_verified === null) {
                 $state.go('session.ask-phone-no');
               } else {
@@ -231,7 +235,7 @@ factory('User', [
               }
             });
           } else {
-            usr.busy = false;
+            _this.busy = false;
             console.log('no user info');
           }
         }

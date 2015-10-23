@@ -26,7 +26,7 @@ controller('StuffCtrl', ['$scope', '$ionicLoading', 'Stuffs', '$localStorage', '
         } else {
           $scope.stuffDone = false;
         }
-        if ($scope.refresh) {
+        if ($scope.refresh && data) {
           $scope.stuffs = data;
         } else {
           $scope.stuffs = $scope.stuffs.concat(data);
@@ -67,10 +67,12 @@ controller('StuffCtrl', ['$scope', '$ionicLoading', 'Stuffs', '$localStorage', '
   };
 
   $scope.locationText = function(stuff) {
-    if (stuff.location !== undefined && stuff.location.length > 1) {
+    if (stuff.location && stuff.location.length > 1) {
       return '@Multi Locations';
     } else {
-      return stuff.location[0].store_name || '';
+      // return stuff.location[0].store_name || '';
+      // console.log(JSON.stringify(stuff));
+      return '';
     }
   };
 
