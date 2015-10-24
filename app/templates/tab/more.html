@@ -2,7 +2,7 @@
   <ion-content class="padding">
     <div class="list">
       <a class="item item-thumbnail-left" href="javascript:;">
-        <img src="{{ user.image_url }}">
+        <img src="{{ user.image_url | avatar: user.email }}">
         <h2>{{ user.first_name }} {{ user.last_name }}</h2>
         <p>{{ user.email }}</p>
         <p>You have {{ user.good_coins_available }} Crowd Coins to use</p>

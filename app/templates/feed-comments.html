@@ -1,16 +1,16 @@
 <ion-view view-title="Feed Comment">
   <ion-content class="padding">
-    <ion-item class="list card crowd-card crowd-feed detail crowd-comment">
-      <div class="item item-avatar">
-        <img ng-src="{{ feed.user_image_url }}">
+    <ion-item class="list card crowd-card crowd-feed detail">
+      <div class="item item-avatar author">
+        <img ng-src="{{ feed.user_image_url | avatar: '' }}" />
         <h2>{{ feed.user_name }}</h2>
-        <p>{{ feed.created_at | date }}</p>
+        <span>{{ feed.created_at | date }}</span>
       </div>
       <div class="item item-body">
         <img class="full-image" ng-src="{{ feed.image_url }}">
       </div>
-      <div class="item item-avatar" ng-repeat="comment in feed.comments">
-        <img ng-src="{{ comment.user_image_url }}">
+      <div class="comment item item-avatar" ng-repeat="comment in feed.comments">
+        <img ng-src="{{ comment.user_image_url | avatar: '' }}" />
         <h2>{{ comment.user_name }}</h2>
         <p>{{ comment.description }}</p>
         <span class="absolute-top-right" am-time-ago='comment.created_at'></span>
@@ -18,11 +18,14 @@
       </div>
     </ion-item>
   </ion-content>
-  <div class="item item-avatar fixed-bottom-full-width">
-    <img ng-src="{{ current_user.image_url }}">
-    <label class="item item-input">
-      <textarea ng-model="usercomment" placeholder="Comment"></textarea>
-    </label>
-    <a href="javascript:;" ng-click="sendComment(usercomment)" class="button button-clear button-positive">Send</a>
+  <div class="list fixed-bottom-full-width">
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <textarea ng-model="usercomment" placeholder="Comment"></textarea>
+      </label>
+      <button class="button button-small button-positive" ng-click="sendComment(usercomment)">
+        Send
+      </button>
+    </div>
   </div>
 </ion-view>

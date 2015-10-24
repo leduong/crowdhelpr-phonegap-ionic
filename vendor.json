@@ -10,5 +10,6 @@
   "bower_components/ngstorage/ngStorage.min.js",
   "bower_components/jquery/dist/jquery.min.js",
   "bower_components/fastclick/lib/fastclick.js",
+  "bower_components/FlipClock/compiled/flipclock.min.js",
   "bower_components/ngCordova/dist/ng-cordova.js"
 ]

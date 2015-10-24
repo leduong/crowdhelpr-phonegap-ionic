@@ -8,7 +8,8 @@ controller('MoreCtrl', [
     $scope.user = $localStorage.current_user || {};
 
     $scope.logOut = function() {
-      $localStorage.$reset();
+      $localStorage.token = undefined;
+      $localStorage.current_user = {};
       $state.go('session.new');
     };
   }

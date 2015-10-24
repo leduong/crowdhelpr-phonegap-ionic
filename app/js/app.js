@@ -625,11 +625,9 @@ angular.module('CrowdhelprApp', [
     '$rootScope', '$location', '$q', '$localStorage', 'API_ENDPOINT',
     function($rootScope, $location, $q, $localStorage, API_ENDPOINT) {
       function resetToken() {
-        $localStorage.$reset({
-          current_user: {},
-          token: undefined,
-          http: API_ENDPOINT.host
-        });
+        $localStorage.token = undefined;
+        $localStorage.current_user = {};
+        $localStorage.http = API_ENDPOINT.host;
       }
       if ($localStorage.token === undefined) {
         resetToken();
@@ -637,12 +635,15 @@ angular.module('CrowdhelprApp', [
 
       return {
         request: function(config) {
+          // console.log(config);
           config.headers = config.headers || {};
           var token = $localStorage.token || null;
           if (token) {
             config.headers.Authorization = 'Token token=' + $localStorage.token;
           }
-          $rootScope.$broadcast('loading:show');
+          if (!config.url.search('api/events')) {
+            $rootScope.$broadcast('loading:show');
+          }
           return config;
         },
 

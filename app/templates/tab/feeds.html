@@ -9,8 +9,8 @@
     <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
     </ion-refresher>
     <ion-item class="crowd-feed" ng-repeat="feed in feeds">
-      <a class="item item-avatar" href="#/tab/user/profile/{{feed.user_id}}"><img ng-src="{{ feed.user_image_url }}">
-        <h2>{{ feed.user_name }}</h2><span am-time-ago="feed.created_at"></span></img>
+      <a class="item item-avatar author" href="#/tab/user/profile/{{feed.user_id}}"><img ng-src="{{ feed.user_image_url | avatar: '' }}"/>
+        <h2>{{ feed.user_name }}</h2><span am-time-ago="feed.created_at"></span>
       </a>
       <div class="item item-body">
         <img class="full-image" ng-src="{{ feed.image_url }}" />

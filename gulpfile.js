@@ -1,5 +1,5 @@
 'use strict';
-
+var debug = true;
 var appName = 'CrowdhelprApp';
 
 var gulp = require('gulp');
@@ -106,6 +106,7 @@ gulp.task('styles', function() {
 // build templatecache, copy scripts.
 // if build: concat, minsafe, uglify and versionize
 gulp.task('scripts', function() {
+
   var dest = path.join(targetDir, 'js');
 
   var minifyConfig = {
@@ -140,7 +141,12 @@ gulp.task('scripts', function() {
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(stripDebug, plugins.stripDebug()))
     .pipe(plugins.if(build, plugins.concat('app.js')))
-    .pipe(plugins.if(build, plugins.uglify()))
+    .pipe(plugins.if(build, plugins.uglify({
+      output: {
+        beautify: debug
+      },
+      mangle: !debug
+    })))
     .pipe(plugins.if(build && !emulate, plugins.rev()))
 
   .pipe(gulp.dest(dest))
@@ -206,7 +212,12 @@ gulp.task('vendor', function() {
 
   return gulp.src(vendorFiles)
     .pipe(plugins.concat('vendor.js'))
-    .pipe(plugins.if(build, plugins.uglify()))
+    .pipe(plugins.if(build, plugins.uglify({
+      output: {
+        beautify: debug
+      },
+      mangle: !debug
+    })))
     .pipe(plugins.if(build, plugins.rev()))
     .pipe(gulp.dest(targetDir))
     .on('error', errorHandler);

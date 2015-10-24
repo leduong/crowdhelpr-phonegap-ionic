@@ -1,8 +1,8 @@
 <ion-view view-title="Edit Profile" cache-view="false">
   <ion-content class="padding">
     <ul class="list">
-      <a class="edit-profile item item-avatar" href="javascript:;;">
-        <img ng-src="{{ user.image_url }}">
+      <a class="edit-profile item item-avatar" href="javascript:;">
+        <img ng-src="{{ user.image_url | avatar: user.email }}">
       </a>
       <label class="item item-input">
         <input type="text" placeholder="Street" ng-model="data.street">

@@ -92,7 +92,10 @@ factory('User', [
     };
 
     User.prototype.signUp = function(params) {
-      params.push_token = $localStorage.push_token;
+      angular.extend(params, {
+        push_token: $localStorage.push_token,
+        app: 'android'
+      });
       if (this.busy) {
         return;
       }
@@ -144,17 +147,23 @@ factory('User', [
     };
 
     User.prototype.signOut = function() {
-      $localStorage.$reset();
+      $localStorage.token = undefined;
+      $localStorage.current_user = {};
       $state.go('session.new');
     };
 
     User.prototype.signIn = function(params) {
-      params.push_token = $localStorage.push_token;
+      angular.extend(params, {
+        push_token: $localStorage.push_token,
+        app: 'android'
+      });
+
       var _this = this;
       if (_this.busy) {
         return;
       }
       _this.busy = true;
+      console.log(JSON.stringify(params));
       UserService.signIn(params).then(function(res) {
         var data = res.data || {};
         _this.busy = false;
@@ -265,6 +274,7 @@ factory('User', [
         _this.busy = false;
         var result = res.data.result || {};
         $localStorage.current_user = result;
+        console.log(JSON.stringify(result));
         return result;
       });
     };

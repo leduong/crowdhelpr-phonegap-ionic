@@ -60,7 +60,8 @@ controller('SessionCtrl', [
     };
 
     $scope.log_out = function() {
-      $localStorage.$reset();
+      $localStorage.token = undefined;
+      $localStorage.current_user = {};
       $state.go('session.new', {}, {
         reload: true
       });
