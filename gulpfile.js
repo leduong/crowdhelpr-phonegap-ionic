@@ -1,5 +1,5 @@
 'use strict';
-var debug = true;
+var debug = false;
 var appName = 'CrowdhelprApp';
 
 var gulp = require('gulp');

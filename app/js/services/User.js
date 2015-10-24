@@ -80,7 +80,7 @@ factory('User', [
       var _this = this;
       return UserService.signIn(params).then(function(res) {
         _this.busy = false;
-        console.log(JSON.stringify(res.data));
+        // console.log(JSON.stringify(res.data));
         $localStorage.token = res.token;
         $localStorage.current_user = res.user;
         if ($localStorage.current_user !== undefined && $localStorage.current_user.phone_verified === null) {

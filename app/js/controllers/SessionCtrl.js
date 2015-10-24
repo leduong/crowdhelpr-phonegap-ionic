@@ -75,7 +75,7 @@ controller('SessionCtrl', [
         if (data === undefined) {
           $localStorage.token = undefined;
         } else {
-          console.log(data);
+          // console.log(data);
           $state.go('tab.sweep');
         }
         $ionicLoading.hide();

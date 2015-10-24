@@ -556,6 +556,22 @@ angular.module('CrowdhelprApp', [
   'youtube-embed'
 ])
 
+.config(['$ionicConfigProvider', '$ionicAppProvider', function($ionicConfigProvider, $ionicAppProvider) {
+
+  $ionicAppProvider.identify({
+    // The App ID (from apps.ionic.io) for the server
+    app_id: '17ccd99e',
+    // The public API key all services will use for this app
+    api_key: '5cd8779729b603b6dfc99de279a5a582887da916f6580648',
+    // Set the app to use development pushes
+    dev_push: true
+  });
+
+  $ionicConfigProvider.tabs.position('bottom');
+  $ionicConfigProvider.navBar.alignTitle('center');
+
+}])
+
 .run([
   '$ionicPlatform', '$cordovaPush', '$localStorage',
   function($ionicPlatform, $cordovaPush, $localStorage) {
@@ -604,21 +620,6 @@ angular.module('CrowdhelprApp', [
   }
 ])
 
-.config(['$ionicConfigProvider', '$ionicAppProvider', function($ionicConfigProvider, $ionicAppProvider) {
-
-  $ionicAppProvider.identify({
-    // The App ID (from apps.ionic.io) for the server
-    app_id: 'a93055ca',
-    // The public API key all services will use for this app
-    api_key: 'a11d353dbf27232cde4c1b60adf3638b25965b82fc1187dc',
-    // Set the app to use development pushes
-    dev_push: true
-  });
-
-  $ionicConfigProvider.tabs.position('bottom');
-  $ionicConfigProvider.navBar.alignTitle('center');
-
-}])
 
 .config(['$httpProvider', function($httpProvider) {
   $httpProvider.interceptors.push([
