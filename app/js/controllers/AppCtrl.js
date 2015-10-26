@@ -2,14 +2,23 @@
 
 angular.module('CrowdhelprApp').
 controller('AppCtrl', [
-  '$scope', '$cordovaPush', '$cordovaDialogs', '$cordovaMedia', '$cordovaToast', '$localStorage',
-  function($scope, $cordovaPush, $cordovaDialogs, $cordovaMedia, $cordovaToast, $localStorage) {
+  '$scope', '$cordovaPush', '$cordovaDialogs', '$cordovaMedia', '$cordovaToast', '$ionicPopup', '$localStorage',
+  function($scope, $cordovaPush, $cordovaDialogs, $cordovaMedia, $cordovaToast, $ionicPopup, $localStorage) {
     $scope.notifications = [];
 
     // Notification Received
     $scope.$on('$cordovaToast:notification', function(event, notification) {
-      $cordovaToast.showLongTop(notification[0]);
+      var message = angular.isArray(notification) ? notification[0] : notification;
+      console.log(JSON.stringify(notification));
+      $cordovaToast.showLongTop(message);
+    }); // Notification Received
+    $scope.$on('ionicPopup', function(event, arr) {
+      $ionicPopup.alert({
+        title: arr[0],
+        template: arr[1]
+      });
     });
+
     $scope.$on('$cordovaPush:notificationReceived', function(event, notification) {
       // console.log(JSON.stringify([notification]));
       if (ionic.Platform.isAndroid()) {

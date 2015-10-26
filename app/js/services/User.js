@@ -274,7 +274,7 @@ factory('User', [
         _this.busy = false;
         var result = res.data.result || {};
         $localStorage.current_user = result;
-        console.log(JSON.stringify(result));
+        // console.log(JSON.stringify(result));
         return result;
       });
     };

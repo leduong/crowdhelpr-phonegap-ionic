@@ -5,7 +5,7 @@
   <ion-nav-buttons side="left">
     <button class="button" ng-click="switchFeed()">{{ feedStatus[1] }}</button>
   </ion-nav-buttons>
-  <ion-content class="padding">
+  <ion-content class="padding0">
     <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
     </ion-refresher>
     <ion-item class="crowd-feed" ng-repeat="feed in feeds">

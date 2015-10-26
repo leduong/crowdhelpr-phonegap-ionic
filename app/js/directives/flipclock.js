@@ -21,5 +21,5 @@ directive('flipclock', function() {
         countdown: true
       });
     }
-  }
+  };
 });

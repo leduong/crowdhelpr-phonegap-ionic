@@ -1,5 +1,5 @@
 'use strict';
-var debug = false;
+var debug = true;
 var appName = 'CrowdhelprApp';
 
 var gulp = require('gulp');
@@ -191,7 +191,7 @@ gulp.task('iconfont', function() {
 // copy images
 gulp.task('images', function() {
   return gulp.src('app/img/**/*.*')
-    .pipe(gulp.dest(path.join(targetDir, 'images')))
+    .pipe(gulp.dest(path.join(targetDir, 'img')))
     .on('error', errorHandler);
 });
 

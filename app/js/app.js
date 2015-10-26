@@ -657,13 +657,17 @@ angular.module('CrowdhelprApp', [
             if (res.data.status_code === 0) {
               $rootScope.$broadcast('$cordovaToast:notification', res.data.message || 'Bad request!');
             }
+            // console.log(JSON.stringify(res));
           }
           //   // console.log(res);
           $rootScope.$broadcast('loading:hide');
+
           return res;
         },
 
         responseError: function(rejection) {
+          console.log(JSON.stringify(rejection));
+
           if (rejection.status === 400) {
             if (rejection.headers()['content-type'] === 'application/json' || rejection.headers()['content-type'] === 'application/json; charset=utf-8') {
               $rootScope.$broadcast('$cordovaToast:notification', rejection.data.message || 'Bad request!');
@@ -775,7 +779,17 @@ config([
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tab/index.html',
-      controller: 'TabCtrl'
+      controller: 'TabCtrl',
+      resolve: {
+        currentUser: ['$localStorage', '$state',
+          function($localStorage, $state) {
+            if (!$localStorage.current_user) {
+              $state.go('session.new');
+            }
+            return $localStorage.current_user;
+          }
+        ]
+      }
     }).
 
     // Each tab has its own nav history stack:
@@ -803,7 +817,7 @@ config([
       url: '/sweep/:sweepId',
       views: {
         'tab-sweep': {
-          templateUrl: 'templates/sweep-detail.html',
+          templateUrl: 'templates/tab/sweep-detail.html',
           controller: 'SweepDetailCtrl'
         }
       }
@@ -813,7 +827,7 @@ config([
       url: '/sweep/:sweepId/leaderboard',
       views: {
         'tab-sweep': {
-          templateUrl: 'templates/sweep-leaderboard.html',
+          templateUrl: 'templates/tab/sweep-leaderboard.html',
           controller: 'SweepLeaderboardCtrl'
         }
       }
@@ -823,7 +837,7 @@ config([
       url: '/sweep/:sweepId/donation',
       views: {
         'tab-sweep': {
-          templateUrl: 'templates/sweep-donation.html',
+          templateUrl: 'templates/tab/sweep-donation.html',
           controller: 'SweepDonationCtrl'
         }
       }
@@ -844,7 +858,7 @@ config([
       url: '/stuff/:factualId/:storeId',
       views: {
         'tab-stuff': {
-          templateUrl: 'templates/stuff-detail.html',
+          templateUrl: 'templates/tab/stuff-detail.html',
           controller: 'StuffDetailCtrl'
         }
       }
@@ -864,7 +878,7 @@ config([
       url: '/feeds/:feedId/comments',
       views: {
         'tab-feeds': {
-          templateUrl: 'templates/feed-comments.html',
+          templateUrl: 'templates/tab/feed-comments.html',
           controller: 'CommentsCtrl'
         }
       }
@@ -914,7 +928,7 @@ config([
       url: '/leaderboard/:sweepId',
       views: {
         'tab-more': {
-          templateUrl: 'templates/sweep-leaderboard.html',
+          templateUrl: 'templates/tab/sweep-leaderboard.html',
           controller: 'SweepLeaderboardCtrl'
         }
       }
@@ -984,52 +998,3 @@ config([
     $urlRouterProvider.otherwise('/session/new');
   }
 ]);
-
-/*
-
- .run(['$cordovaPush', function($cordovaPush) {
-
-  var androidConfig = {
-    "senderID": "replace_with_sender_id",
-  };
-
-  document.addEventListener("deviceready", function() {
-    $cordovaPush.register(androidConfig).then(function(result) {
-      // Success
-    }, function(err) {
-      // Error
-    })
-
-    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
-      switch (notification.event) {
-        case 'registered':
-          if (notification.regid.length > 0) {
-            alert('registration ID = ' + notification.regid);
-          }
-          break;
-
-        case 'message':
-          // this is the actual push notification. its format depends on the data model from the push server
-          alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
-          break;
-
-        case 'error':
-          alert('GCM error = ' + notification.msg);
-          break;
-
-        default:
-          alert('An unknown GCM event has occurred');
-          break;
-      }
-    });
-
-
-    // WARNING: dangerous to unregister (results in loss of tokenID)
-    $cordovaPush.unregister(options).then(function(result) {
-      // Success!
-    }, function(err) {
-      // Error
-    })
-
-  }, false);
-}]);*/

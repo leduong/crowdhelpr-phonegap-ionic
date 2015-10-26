@@ -3,8 +3,8 @@
 angular.module('CrowdhelprApp').
 
 factory('Stuffs', [
-  '$localStorage', '$ionicLoading', '$state', 'StuffService',
-  function($localStorage, $ionicLoading, $state, StuffService) {
+  '$rootScope', '$localStorage', 'StuffService',
+  function($rootScope, $localStorage, StuffService) {
     var Stuff = function() {
       this.busy = false;
     };
@@ -20,10 +20,12 @@ factory('Stuffs', [
         centerlat: $localStorage.latitude,
         centerlng: $localStorage.longitude
       };
-      return StuffService.getStuff(params).then(function(res) {
+      return StuffService.stuffs(params).then(function(res) {
         _this.busy = false;
         var result = res.data.result || {};
         return result;
+      }, function() {
+        $rootScope.$broadcast('$cordovaToast:notification', 'Oops, something went wrong! Please swipe down to refresh');
       });
     };
 
@@ -46,7 +48,7 @@ factory('Stuffs', [
       });
     };
 
-    Stuff.prototype.scan = function(barcode, lat, lng) {
+    Stuff.prototype.scan = function(barcode) {
       if (this.busy) {
         return;
       }
@@ -54,8 +56,8 @@ factory('Stuffs', [
       var _this = this;
       var params = {
         barcode: barcode,
-        centerlat: lat,
-        centerlng: lng
+        centerlat: $localStorage.latitude,
+        centerlng: $localStorage.longitude
       };
       return StuffService.enterCampaign(params).then(function(res) {
         _this.busy = false;

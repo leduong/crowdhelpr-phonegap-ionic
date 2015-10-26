@@ -1,9 +1,10 @@
 <ion-view cache-view="false" ng-controller="SessionCtrl" view-title="Sign In">
-  <ion-content class="padding">
+  <ion-content>
     <form name="form" novalidate role="form">
-      <a class="button button-full" ng-href="#/session/register">Register</a>
-      <button class="button button-positive button-full" ng-click="fbLogin()"><i class="ion-social-facebook"></i> Sign In with facebook</button>
-      <div class="list">
+      <div class="list list-inset">
+        <label class="item logo">
+          <img alt="crownhelpr" src="img/logo.png" />
+        </label>
         <label class="item item-input">
           <input ng-model="data.email" placeholder="Email" required type="email" />
         </label>
@@ -12,9 +13,15 @@
         </label>
         <validation-dir field="data.error">
         </validation-dir>
+        <button class="button button-full button-calm" ng-click="signIn()" ng-disabled="form.$invalid">Login</button>
+        <div class="row row-center">
+          <div class="col col-50">
+            Need to Signup? <a class="button button-small button-positive" ng-href="#/session/register">Sign up</a>
+          </div>
+          <div class="col col-50"><a ng-href="#/session/reset">Forgot your password?</a></div>
+        </div>
+        <button class="button button-full button-positive" ng-click="fbLogin()"><i class="ion-social-facebook"></i> Sign In with facebook</button>
       </div>
-      <button class="button button-calm button-full" ng-click="signIn()" ng-disabled="form.$invalid">Login</button>
-      <a class="button button-full" ng-href="#/session/reset">Reset Password</a>
       <div class="terms center-text">
         by using crowdhelpr you agree to our
         <br/>

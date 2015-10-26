@@ -3,7 +3,7 @@
     <!-- <a href="#/tab/sweep/{{sweep.id}}/leaderboard" class="button"><i class="ion-trophy"></i> Leaderboard</a> -->
     <button ng-click="showActionSheets()" class="button"><i class="ion-android-more-horizontal"></i></button>
   </ion-nav-buttons>
-  <ion-content class="padding">
+  <ion-content class="padding0">
     <div class="item item-body">
       <h2 class="text-center">{{ sweep.title }}</h2>
       <p class="text-center">
@@ -13,7 +13,7 @@
         <youtube-video video-id="videoId" player-width="'100%'"></youtube-video>
         <hr ng-hide="{{videoId == null}}" />
         <h3 class="text-center">TIME LEFT</h3>
-        <div id="countdown" class="countdown" flipclock="sweep.end_time"></div>
+        <div id="countdown" class="countdown text-center" flipclock="sweep.end_time"></div>
         <p class="text-center"><strong>Raised {{ sweep.fund_raised | currency }} of {{ sweep.fund_goal | currency }} goal</strong></p>
         <h3>Sweep</h3>
         <p ng-bind-html="sweep.campaign_info"></p>
