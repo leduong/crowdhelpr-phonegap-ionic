@@ -6,7 +6,7 @@ controller('StuffCtrl', [
   '$rootScope', '$scope', '$ionicLoading', 'Stuffs', '$localStorage', 'geolocation',
   function($rootScope, $scope, $ionicLoading, Stuffs, $localStorage, geolocation) {
     $scope.stuffs = [];
-    $scope.page = 0;
+    $scope.page = 1;
     $scope.stuffDone = false;
     $scope.refresh = false;
     $scope.dontScan = false;
@@ -21,8 +21,10 @@ controller('StuffCtrl', [
         $scope.page = 1;
         $scope.refresh = true;
         $scope.error = undefined;
+        console.log(lat, lng);
       });
     };
+    getLatLng();
 
     $scope.loadMore = function() {
       if ($localStorage.latitude && $localStorage.longitude) {

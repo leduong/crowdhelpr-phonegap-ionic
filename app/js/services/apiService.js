@@ -26,6 +26,7 @@ factory('API', [
         getUser: endpoint + 'getuser',
         myCarts: endpoint + 'mycarts',
         follow: endpoint + 'follow',
+        userLists: endpoint + 'userlists',
         search: endpoint + 'search'
       },
       feed: {

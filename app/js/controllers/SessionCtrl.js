@@ -68,9 +68,6 @@ controller('SessionCtrl', [
     };
 
     if ($localStorage.token !== undefined) {
-      $ionicLoading.show({
-        message: 'Fetching...'
-      });
       user.currentUser().then(function(data) {
         if (data === undefined) {
           $localStorage.token = undefined;

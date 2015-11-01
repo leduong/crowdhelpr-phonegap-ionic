@@ -5,6 +5,7 @@
   "bower_components/lodash/lodash.js",
   "bower_components/moment/min/moment.min.js",
   "bower_components/angular-moment/angular-moment.min.js",
+  "bower_components/ment.io/dist/mentio.min.js",
   "bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js",
   "bower_components/ngmap/build/scripts/ng-map.min.js",
   "bower_components/ngstorage/ngStorage.min.js",

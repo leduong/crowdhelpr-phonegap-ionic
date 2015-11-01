@@ -551,6 +551,7 @@ angular.module('CrowdhelprApp', [
   'ionic.service.push',
   'ngCordova',
   'ngStorage',
+  'mentio',
   'ngMap',
   'angularMoment',
   'youtube-embed'
@@ -650,12 +651,18 @@ angular.module('CrowdhelprApp', [
 
         response: function(res) {
           if (res.headers()['content-type'] === 'application/json' || res.headers()['content-type'] === 'application/json; charset=utf-8') {
+
+            if (res.data.status_code === 0) {
+              $rootScope.$broadcast('$cordovaToast:notification', res.data.message || 'Bad request!');
+            }
+            if (res.data.status_code === 3) {
+              resetToken();
+              $rootScope.$broadcast('$cordovaToast:notification', res.data.message || 'Unauthorize');
+            }
+
             if (res.data.status_code !== 1 && res.data.status_code !== 'parameters not set') {
               resetToken();
               // $location.path('/session/new');
-            }
-            if (res.data.status_code === 0) {
-              $rootScope.$broadcast('$cordovaToast:notification', res.data.message || 'Bad request!');
             }
             // console.log(JSON.stringify(res));
           }
@@ -870,6 +877,16 @@ config([
         'tab-feeds': {
           templateUrl: 'templates/tab/feeds.html',
           controller: 'FeedsCtrl'
+        }
+      }
+    }).
+
+    state('tab.feed', {
+      url: '/feed/:feedId',
+      views: {
+        'tab-feeds': {
+          templateUrl: 'templates/tab/feed.html',
+          controller: 'CommentsCtrl'
         }
       }
     }).

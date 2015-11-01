@@ -27,6 +27,9 @@ factory('UserService', [
       signIn: function(params) {
         return $http.post(API.user.signIn, params);
       },
+      userLists: function() {
+        return $http.get(API.user.userLists);
+      },
       getUser: function(userid, params) {
         if (userid) {
           return $http.get(API.user.getUser + '?userid=' + userid, {

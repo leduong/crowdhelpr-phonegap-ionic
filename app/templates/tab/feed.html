@@ -18,11 +18,10 @@
       </div>
     </ion-item>
   </ion-content>
-  <div class="list fixed-bottom-full-width" ng-class="{'active': active}">
+  <div class="list fixed-bottom-full-width">
     <div class="item item-input-inset">
-
-      <label class="item-input-wrapper" ng-click="active = true" >
-        <textarea mentio mentio-macros="macros" mentio-trigger-char="'@'" mentio-require-leading-space="true" mentio-items="userLists" mentio-template-url="/people-mentions.tpl" mentio-search="searchPeople(term)" mentio-select="getPeopleTextRaw(item)" mentio-typed-term="typedTerm2" mentio-id="'usercomment'" ng-model="usercomment" ng-trim="false" placeholder="Comment" ng-blur="active = false"></textarea>
+      <label class="item-input-wrapper">
+        <textarea mentio mentio-macros="macros" mentio-trigger-char="'@'" mentio-require-leading-space="true" mentio-items="userLists" mentio-template-url="/people-mentions.tpl" mentio-search="searchPeople(term)" mentio-select="getPeopleTextRaw(item)" mentio-typed-term="typedTerm2" mentio-id="'usercomment'" ng-model="usercomment" ng-trim="false" rows="2" placeholder="Comment"></textarea>
         <ul ng-if="$mention.choices.length" class="dropdown">
           <li ng-repeat="choice in $mention.choices" ng-class="{active:$mention.activeChoice==choice}">
             <a ng-click="$mention.select(choice)">

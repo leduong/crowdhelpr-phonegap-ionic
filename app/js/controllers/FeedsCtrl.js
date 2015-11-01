@@ -11,7 +11,7 @@ controller('FeedsCtrl', [
     $scope.feedDone = false;
     $scope.refresh = false;
     $scope.feedStatus = [0, 'All'];
-    var feed_object = new Feeds();
+    var feedObject = new Feeds();
 
     $scope.flag = function(feeds, feed) {
       var confirmFlag = $ionicPopup.confirm({
@@ -20,7 +20,7 @@ controller('FeedsCtrl', [
       });
       confirmFlag.then(function(res) {
         if (res) {
-          feed_object.flagFeed(feed.id).then(function(data) {
+          feedObject.flagFeed(feed.id).then(function(data) {
             var idx = feeds.indexOf(feed);
             feeds[idx] = data;
           });
@@ -29,7 +29,7 @@ controller('FeedsCtrl', [
     };
 
     $scope.removeFeed = function(feeds, feed) {
-      feed_object.destroy(feed.id).then(function() {
+      feedObject.destroy(feed.id).then(function() {
         var idx = feeds.indexOf(feed);
         if (idx > -1) {
           feeds.splice(idx, 1);
@@ -45,7 +45,7 @@ controller('FeedsCtrl', [
       $cordovaSocialSharing
         .share(feed.description, null, feed.media, feed.sharing_url)
         .then(function() {
-          feed_object.share(feed.id);
+          feedObject.share(feed.id);
         }, function(err) {
           console.log(err);
           // An error occurred. Show a message to the user
@@ -127,7 +127,7 @@ controller('FeedsCtrl', [
     $scope.loadMore = function() {
       if (!$scope.feedDone) {
         $scope.page += 1;
-        feed_object.paginate($scope.page, $scope.feedStatus[0]).then(function(data) {
+        feedObject.paginate($scope.page, $scope.feedStatus[0]).then(function(data) {
           if (data.length < 3) {
             $scope.feedDone = true;
           }
@@ -146,15 +146,16 @@ controller('FeedsCtrl', [
       }
     };
 
-    $scope.likeThis = function(feeds, feed) {
-      feed_object.like(feed.id).then(function(data) {
+    $scope.likeThis = function(id, feeds) {
+      var result = feedObject.like(id);
+      if (result) {
         for (var i = 0; i < feeds.length; i++) {
-          if (feeds[i].id === feed.id) {
-            feeds[i] = data;
+          if (feeds[i].id === id) {
+            feeds[i] = result;
             return;
           }
         }
-      });
+      }
     };
   }
 ]);
