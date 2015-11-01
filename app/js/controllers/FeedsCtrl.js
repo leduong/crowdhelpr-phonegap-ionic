@@ -147,15 +147,18 @@ controller('FeedsCtrl', [
     };
 
     $scope.likeThis = function(id, feeds) {
-      var result = feedObject.like(id);
-      if (result) {
-        for (var i = 0; i < feeds.length; i++) {
-          if (feeds[i].id === id) {
-            feeds[i] = result;
-            return;
+      feedObject.like(id).then(function(data) {
+        if (data) {
+          for (var i = 0; i < feeds.length; i++) {
+            if (feeds[i].id === id) {
+              feeds[i] = data;
+              return;
+            }
           }
+          // $scope.feeds = feeds;
         }
-      }
+      });
+
     };
   }
 ]);

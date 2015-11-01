@@ -1,0 +1,25 @@
+<ion-view cache-view="false" ng-controller="SessionCtrl">
+  <ion-content>
+    <form name="form" novalidate role="form">
+      <div class="list list-inset">
+        <label class="item logo">
+          <img alt="crownhelpr" src="img/logo.png" />
+          <h2 class="calm">Crowdhelpr.com</h2>
+        </label>
+        <div class="row">
+          <div class="col col-50 text-right">
+            <a class="button button-small button-assertive" ng-href="#/session/new">Sign in</a>
+          </div>
+          <div class="col col-50"><a class="button button-small button-positive" ng-href="#/session/register">Sign up</a></div>
+        </div>
+        <button class="button button-full button-positive" ng-click="fbLogin()"><i class="ion-social-facebook"></i> Sign In with facebook</button>
+      </div>
+      <div class="terms text-center">
+        by using crowdhelpr you agree to our
+        <br/>
+        <a ng-href="#/session/terms">terms of service</a> and
+        <a ng-href="#/session/privacy">privacy policy</a>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

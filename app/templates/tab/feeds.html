@@ -17,7 +17,7 @@
       </div>
       <p ng-bind="feed.description" ng-if="feed.description">
       </p>
-      <div class="item tabs tabs-secondary tabs-icon-left">
+      <div id="crowd-button" class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" href="javascript:;" ng-click="likeThis(feed.id, feeds)"><i class="icon ion-thumbsup" ng-class="{'calm':feed.liked}"></i> {{feed.likescnt}} Like</a>
         <a class="tab-item" href="#/tab/feeds/{{feed.id}}/comments" ng-click="storeFeed(feed)"><i class="icon ion-chatbox"></i> {{feed.cmts}} Comment</a>
         <a class="tab-item" href="javascript:;" ng-click="share(feed)"><i class="icon ion-share"></i> Share</a>

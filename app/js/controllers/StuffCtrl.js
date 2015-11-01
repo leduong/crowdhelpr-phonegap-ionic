@@ -52,6 +52,7 @@ controller('StuffCtrl', [
           $scope.$broadcast('scroll.infiniteScrollComplete');
         }
       } else {
+        $ionicLoading.hide();
         $rootScope.$broadcast('ionicPopup', ['Alert', 'Whoops we can\'t get your location. Please turn on GPS in your phones settings.']);
       }
     };

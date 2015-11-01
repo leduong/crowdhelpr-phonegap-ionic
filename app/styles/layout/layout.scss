@@ -1,3 +1,4 @@
+@import "ionic/_variables";
 a {
     text-decoration: none
 }
@@ -145,7 +146,8 @@ a {
             height: 100px;
         }
         .button {
-            margin-left: 6px;
+            // margin-left: -1116px;
+            display: none;
         }
     }
 }
@@ -173,10 +175,6 @@ a {
     img {
         position: initial;
     }
-}
-
-.center-text {
-    text-align: center;
 }
 
 .display-block {
@@ -221,7 +219,7 @@ a {
     .item-body {
         padding: 0;
     }
-    .tabs {
+    #crowd-button.tabs {
         // position: absolute;
         // bottom: 55px;
         // left: 0;
@@ -230,7 +228,7 @@ a {
         // z-index: 999999;
         border: none;
         .tab-item {
-            color: #666;
+            color: $dark;
             font-size: 10px;
         }
     }
@@ -277,5 +275,11 @@ a {
                 }
             }
         }
+    }
+}
+
+#crowd-tabs {
+    .tab-item  {
+        color: darken($calm, 10%);
     }
 }

@@ -709,6 +709,11 @@ config([
   '$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
     $stateProvider.
+    state('intro', {
+      url: '/',
+      templateUrl: 'templates/intro.html'
+    }).
+
     state('session', {
       url: '/session',
       abstract: true,
@@ -1012,6 +1017,6 @@ config([
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/session/new');
+    $urlRouterProvider.otherwise('/');
   }
 ]);
