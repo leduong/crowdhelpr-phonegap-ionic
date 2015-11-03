@@ -280,6 +280,11 @@ a {
 
 #crowd-tabs {
     .tab-item  {
-        color: darken($calm, 10%);
+        color: darken($positive, 20%);
+        background-color: $stable;
+        font-size: 13px;
+        &.tab-item-active{
+            color: $positive;
+        }
     }
 }
