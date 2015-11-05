@@ -2,9 +2,11 @@
   <ion-content class="padding0">
     <div class="list">
       <a class="item item-avatar" href="javascript:;" ng-repeat="item in users">
-        <img ng-src="{{ item.user.image_url }}" />
+        <img ng-src="{{ item.user.image_url | avatar: item.user.email }}" />
         <h2>{{ item.user.first_name }} {{ item.user.last_name }}</h2>
-        <p>{{ item.coins }} Points</p>
+        <p class="pull-right">{{ item.coins }} Points</p>
+        <progress max="100" ng-value="item.coins | percentage: 55">
+          </progress>
       </a>
     </div>
   </ion-content>

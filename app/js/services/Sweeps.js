@@ -19,7 +19,7 @@ factory('Sweeps', [
       var params = {
         campaignid: sweepId
       };
-      return SweepService.getCampaign(params).then(function(res) {
+      return SweepService.getLeaders(params).then(function(res) {
         _this.busy = false;
         var result = res.data.result || {};
         return result;

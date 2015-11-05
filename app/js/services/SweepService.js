@@ -8,8 +8,10 @@ factory('SweepService', [
       enterCampaign: function(params) {
         return $http.post(API.sweep.enterCampaign, params);
       },
-      getCampaign: function(campaignid) {
-        return $http.get(API.sweep.getCampaign + '?campaignid=' + campaignid);
+      getCampaign: function(params) {
+        return $http.get(API.sweep.getCampaign, {
+          params: params
+        });
       },
       campaigns: function(params) {
         return $http.get(API.sweep.campaigns, {
@@ -22,7 +24,7 @@ factory('SweepService', [
         });
       },
       getLeaders: function(params) {
-        return $http.get(API.sweep.getCampaign, {
+        return $http.get(API.sweep.getLeaders, {
           params: params
         });
       }
