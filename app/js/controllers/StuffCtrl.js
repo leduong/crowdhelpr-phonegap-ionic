@@ -15,8 +15,8 @@ controller('StuffCtrl', [
     var getLatLng = function() {
       return geolocation(function(lat, lng) {
         $ionicLoading.hide();
-        $localStorage.latitude = lat;
-        $localStorage.longitude = lng;
+        $localStorage.latitude = lat || 40.712784;
+        $localStorage.longitude = lng || -74.005941;
         $scope.stuffDone = false;
         $scope.page = 1;
         $scope.refresh = true;
@@ -94,14 +94,14 @@ controller('StuffCtrl', [
         });
         geolocation(function(lat, lng) {
           $ionicLoading.hide();
-          if (lat === undefined && lng === undefined) {
+          if (lat || lng) {
             $rootScope.$broadcast('ionicPopup', [
               'Alert',
               'Whoops we can\'t get your location. Please turn on GPS in your phones settings.'
             ]);
           } else {
-            $localStorage.latitude = lat;
-            $localStorage.longitude = lng;
+            $localStorage.latitude = lat || 40.712784;
+            $localStorage.longitude = lng || -74.005941;
             cordova.plugins.barcodeScanner.scan(
               function(result) {
                 if (result.cancelled) {} else if (result.text !== stuff.barcode) {

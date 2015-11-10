@@ -70,26 +70,6 @@ factory('User', [
       });
     };
 
-    User.prototype.fbSignIn = function(fb_id, params) {
-      params.fb_id = fb_id;
-      params.image_url = 'https://graph.facebook.id/' + fb_id + '/picture';
-      if (this.busy) {
-        return;
-      }
-      this.busy = true;
-      var _this = this;
-      return UserService.signIn(params).then(function(res) {
-        _this.busy = false;
-        // console.log(JSON.stringify(res.data));
-        $localStorage.token = res.token;
-        $localStorage.current_user = res.user;
-        if ($localStorage.current_user !== undefined && $localStorage.current_user.phone_verified === null) {
-          $state.go('session.ask-phone-no');
-        } else {
-          $state.go('tab.sweep');
-        }
-      });
-    };
 
     User.prototype.signUp = function(params) {
       angular.extend(params, {
@@ -233,10 +213,11 @@ factory('User', [
             var params = userInfo;
             params.fb_id = userInfo.id;
             params.image_url = 'https://graph.facebook.id/' + userInfo.id + '/picture';
-            UserService.signIn(params).then(function(res) {
-              console.log(JSON.stringify(res));
-              $localStorage.token = res.token;
-              $localStorage.current_user = res.user;
+
+            UserService.login(params).then(function(res) {
+              // console.log(JSON.stringify(res.data));
+              $localStorage.token = res.data.token;
+              $localStorage.current_user = res.data.user;
               if ($localStorage.current_user !== undefined && $localStorage.current_user.phone_verified === null) {
                 $state.go('session.ask-phone-no');
               } else {

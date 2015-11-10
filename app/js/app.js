@@ -646,6 +646,9 @@ angular.module('CrowdhelprApp', [
           if (!config.url.search('api/events')) {
             $rootScope.$broadcast('loading:show');
           }
+          // if (config.url.search('api') > -1) {
+          //   console.log(JSON.stringify(config));
+          // }
           return config;
         },
 
