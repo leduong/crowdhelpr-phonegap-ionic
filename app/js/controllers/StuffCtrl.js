@@ -15,8 +15,8 @@ controller('StuffCtrl', [
     var getLatLng = function() {
       return geolocation(function(lat, lng) {
         $ionicLoading.hide();
-        $localStorage.latitude = lat || 40.712784;
-        $localStorage.longitude = lng || -74.005941;
+        $localStorage.latitude = 40.712784;
+        $localStorage.longitude = -74.005941;
         $scope.stuffDone = false;
         $scope.page = 1;
         $scope.refresh = true;
@@ -89,46 +89,36 @@ controller('StuffCtrl', [
       if ($scope.dontScan === true) {
         $scope.dontScan = false;
       } else {
-        $ionicLoading.show({
-          template: 'Getting your location'
-        });
         geolocation(function(lat, lng) {
-          $ionicLoading.hide();
-          if (lat || lng) {
-            $rootScope.$broadcast('ionicPopup', [
-              'Alert',
-              'Whoops we can\'t get your location. Please turn on GPS in your phones settings.'
-            ]);
-          } else {
-            $localStorage.latitude = lat || 40.712784;
-            $localStorage.longitude = lng || -74.005941;
-            cordova.plugins.barcodeScanner.scan(
-              function(result) {
-                if (result.cancelled) {} else if (result.text !== stuff.barcode) {
-                  $rootScope.$broadcast('ionicPopup', [
-                    'Alert',
-                    'You have scan different product'
-                  ]);
-                } else {
-                  stuff.scan(result.text).then(function(data) {
-                    $rootScope.$broadcast('ionicPopup', [
-                      'Scan Result',
-                      data.message
-                    ]);
-                    if (data.product_url !== null) {
-                      window.open(data.product_url, '_blank', 'location=no');
-                    }
-                  });
-                }
-              },
-              function(error) {
+          $localStorage.latitude = 40.712784;
+          $localStorage.longitude = -74.005941;
+          cordova.plugins.barcodeScanner.scan(
+            function(result) {
+              if (result.cancelled) {} else if (result.text !== stuff.barcode) {
                 $rootScope.$broadcast('ionicPopup', [
                   'Alert',
-                  'Scanning failed ' + error
+                  'You have scan different product'
                 ]);
+              } else {
+                stuff.scan(result.text).then(function(data) {
+                  $rootScope.$broadcast('ionicPopup', [
+                    'Scan Result',
+                    data.message
+                  ]);
+                  if (data.product_url !== null) {
+                    window.open(data.product_url, '_blank', 'location=no');
+                  }
+                });
               }
-            );
-          }
+            },
+            function(error) {
+              $rootScope.$broadcast('ionicPopup', [
+                'Alert',
+                'Scanning failed ' + error
+              ]);
+            }
+          );
+
         });
       }
     };

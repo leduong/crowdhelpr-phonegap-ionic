@@ -1,5 +1,5 @@
 'use strict';
-var debug = true;
+var debug = false;
 var appName = 'CrowdhelprApp';
 
 var gulp = require('gulp');
@@ -341,7 +341,12 @@ gulp.task('watchers', function() {
 
 // no-op = empty function
 gulp.task('noop', function() {});
-
+gulp.task('phonegap', function() {
+  var zip = require('gulp-zip');
+  return gulp.src(['./www/**', './resources/**', './config.xml'])
+    .pipe(zip('phonegap.zip'))
+    .pipe(gulp.dest('./'));
+});
 // our main sequence, with some conditional jobs depending on params
 gulp.task('default', function(done) {
   runSequence(

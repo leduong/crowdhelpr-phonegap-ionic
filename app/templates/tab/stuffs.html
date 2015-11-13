@@ -2,15 +2,14 @@
   <ion-content class="padding0">
     <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
     </ion-refresher>
-    <ion-item ng-click="scanStuff(stuff)" class="list card crowd-card" ng-repeat="stuff in stuffs" href="javascript:;">
+    <ion-item ng-click="scanStuff(stuff)" class="list crowd-stuff" ng-repeat="stuff in stuffs">
       <div class="item item-body">
         <img ng-src="{{ stuff.image_url }}" class="full-image">
-        <div class="sweep-info">
-          <h1>{{ stuff.name }}</h1>
+        <div class="stuff-info">
+          <h2>{{ stuff.name }}</h2>
           <p>{{ stuff.description }}</p>
-          <hr>
           <a ng-click="saveStuff(stuff)" href="#/tab/stuff/{{stuff.location[0].factual_id}}/{{stuff.location[0].product_store_id}}" class="location">{{ locationText(stuff) }}</a>
-          <p>{{ stuff.distance.toFixed(2) }} MI</p>
+          <span>{{ stuff.distance.toFixed(2) }} MI</span>
         </div>
       </div>
     </ion-item>
