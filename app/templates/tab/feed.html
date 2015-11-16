@@ -14,7 +14,7 @@
         <h2>{{ comment.user_name }}</h2>
         <p>{{ comment.description }}</p>
         <span class="absolute-top-right" am-time-ago='comment.created_at'></span>
-        <a class="ion-trash-a absolute-bottom-right" ng-click="removeComment(comment.id)" ng-show="comment.user_id == current_user.id" href="javascript:;"></a>
+        <a class="ion-trash-a absolute-bottom-right" ng-click="removeComment(comment.id)" ng-show="comment.user_id == current_user.id"></a>
       </div>
     </ion-item>
   </ion-content>

@@ -3,8 +3,8 @@
 angular.module('CrowdhelprApp').
 
 controller('TabCtrl', [
-  '$scope', '$cordovaCamera', '$cordovaImagePicker', '$ionicHistory', '$ionicActionSheet', 'Feeds', '$ionicPopup',
-  function($scope, $cordovaCamera, $cordovaImagePicker, $ionicHistory, $ionicActionSheet, Feeds, $ionicPopup) {
+  '$scope', 'Feeds', '$ionicPopup', '$cordovaCamera', '$cordovaImagePicker', '$ionicHistory', '$ionicActionSheet',
+  function($scope, Feeds, $ionicPopup, $cordovaCamera, $cordovaImagePicker, $ionicHistory, $ionicActionSheet) {
     var feed = new Feeds();
 
     $scope.newPost = function() {

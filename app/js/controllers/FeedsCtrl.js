@@ -3,8 +3,8 @@
 angular.module('CrowdhelprApp').
 
 controller('FeedsCtrl', [
-  '$cordovaSocialSharing', '$state', '$ionicPopup', '$scope', 'Feeds', '$localStorage', '$ionicActionSheet',
-  function($cordovaSocialSharing, $state, $ionicPopup, $scope, Feeds, $localStorage, $ionicActionSheet) {
+  '$rootScope', '$state', '$ionicPopup', '$scope', 'Feeds', '$localStorage', '$ionicActionSheet', '$cordovaSocialSharing',
+  function($rootScope, $state, $ionicPopup, $scope, Feeds, $localStorage, $ionicActionSheet, $cordovaSocialSharing) {
     $scope.feeds = [];
     $scope.data = {};
     $scope.page = 0;
@@ -42,10 +42,12 @@ controller('FeedsCtrl', [
     };
 
     $scope.share = function(feed) {
+      $rootScope.$broadcast('loading:show');
       $cordovaSocialSharing
         .share(feed.description, null, feed.media, feed.sharing_url)
         .then(function() {
           feedObject.share(feed.id);
+          $rootScope.$broadcast('loading:hide');
         }, function(err) {
           console.log(err);
           // An error occurred. Show a message to the user

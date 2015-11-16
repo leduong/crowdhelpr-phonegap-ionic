@@ -31,8 +31,15 @@ a {
   border: none;
 }
 
+img.avatar {
+  height: 64x;
+  width: 64x;
+}
+
 .img-responsive {
-  height: 15vh;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .ion-social-facebook {
@@ -206,7 +213,8 @@ a {
   margin: 0 0 20px 0;
   min-height: 200px;
   // background-color: #eee;
-  border-top : 1px solid rgba(0, 0, 0, 0.3);;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  ;
   border-bottom: 1px solid #fff;
   -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);

@@ -192,7 +192,7 @@ factory('User', [
       FacebookInAppBrowser.settings.appId = '341918775984223';
       // FacebookInAppBrowser.settings.appId = '296864270520544';
       FacebookInAppBrowser.settings.redirectUrl = 'https://www.crowdhelpr.com/';
-      // FacebookInAppBrowser.settings.redirectUrl = 'http://192.168.1.104:3000/';
+      // FacebookInAppBrowser.settings.redirectUrl = 'http://192.168.1.11:8100/';
       FacebookInAppBrowser.settings.permissions = 'email';
       // Optional
       FacebookInAppBrowser.settings.timeoutDuration = 7500;

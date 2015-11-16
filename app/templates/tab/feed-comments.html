@@ -1,48 +1,47 @@
 <ion-view view-title="Feed Comment">
-  <ion-content class="padding0">
-    <ion-item class="list card crowd-card crowd-feed detail">
-      <div class="item item-avatar author">
-        <img ng-src="{{ feed.user_image_url | avatar: '' }}" />
-        <h2>{{ feed.user_name }}</h2>
-        <span>{{ feed.created_at | date }}</span>
-      </div>
-      <div class="item item-body">
-        <img class="full-image" ng-src="{{ feed.image_url }}">
-      </div>
-      <div class="comment item item-avatar" ng-repeat="comment in feed.comments">
-        <img ng-src="{{ comment.user_image_url | avatar: '' }}" />
-        <h2>{{ comment.user_name }}</h2>
-        <p>{{ comment.description }}</p>
-        <span class="absolute-top-right" am-time-ago='comment.created_at'></span>
-        <a class="ion-trash-a absolute-bottom-right" ng-click="removeComment(comment.id)" ng-show="comment.user_id == current_user.id" href="javascript:;"></a>
-      </div>
-    </ion-item>
-  </ion-content>
-  <div class="list fixed-bottom-full-width" ng-class="{'active': active}">
-    <div class="item item-input-inset">
-
-      <label class="item-input-wrapper" ng-click="active = true" >
-        <textarea mentio mentio-macros="macros" mentio-trigger-char="'@'" mentio-require-leading-space="true" mentio-items="userLists" mentio-template-url="/people-mentions.tpl" mentio-search="searchPeople(term)" mentio-select="getPeopleTextRaw(item)" mentio-typed-term="typedTerm2" mentio-id="'usercomment'" ng-model="usercomment" ng-trim="false" placeholder="Comment" ng-blur="active = false"></textarea>
-        <ul ng-if="$mention.choices.length" class="dropdown">
-          <li ng-repeat="choice in $mention.choices" ng-class="{active:$mention.activeChoice==choice}">
-            <a ng-click="$mention.select(choice)">
+    <ion-content class="padding0">
+        <ion-item class="list card crowd-card crowd-feed detail">
+            <div class="item item-avatar author">
+                <img ng-src="{{ feed.user_image_url | avatar: '' }}" />
+                <h2>{{ feed.user_name }}</h2>
+                <span>{{ feed.created_at | date }}</span>
+            </div>
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{ feed.image_url }}">
+            </div>
+            <div class="comment item item-avatar" ng-repeat="comment in feed.comments">
+                <img ng-src="{{ comment.user_image_url | avatar: '' }}" />
+                <h2>{{ comment.user_name }}</h2>
+                <p>{{ comment.description }}</p>
+                <span class="absolute-top-right" am-time-ago='comment.created_at'></span>
+                <a class="ion-trash-a absolute-bottom-right" ng-click="removeComment(comment.id)" ng-show="comment.user_id == current_user.id" ></a>
+            </div>
+        </ion-item>
+    </ion-content>
+    <div class="list fixed-bottom-full-width" ng-class="{'active': active}">
+        <div class="item item-input-inset">
+            <label class="item-input-wrapper" ng-click="active = true">
+                <textarea mentio mentio-macros="macros" mentio-trigger-char="'@'" mentio-require-leading-space="true" mentio-items="userLists" mentio-template-url="/people-mentions.tpl" mentio-search="searchPeople(term)" mentio-select="getPeopleTextRaw(item)" mentio-typed-term="typedTerm2" mentio-id="'usercomment'" ng-model="usercomment" ng-trim="false" placeholder="Comment" ng-blur="active = false"></textarea>
+                <ul ng-if="$mention.choices.length" class="dropdown">
+                    <li ng-repeat="choice in $mention.choices" ng-class="{active:$mention.activeChoice==choice}">
+                        <a ng-click="$mention.select(choice)">
           {{::choice.first}} {{::choice.last}}
         </a>
-          </li>
-        </ul>
-      </label>
-      <button class="button button-small button-positive" ng-click="sendComment(usercomment)">
-        Send
-      </button>
+                    </li>
+                </ul>
+            </label>
+            <button class="button button-small button-positive" ng-click="sendComment(usercomment)">
+                Send
+            </button>
+        </div>
     </div>
-  </div>
 </ion-view>
 <script type="text/ng-template" id="/people-mentions.tpl">
-  <ul class="mentions list">
-    <li mentio-menu-item="person" ng-repeat="person in items" class="item">
-      <img ng-src="{{person.imageUrl}}" />
-      <h2 ng-bind-html="person.name | mentioHighlight:typedTerm:'menu-highlighted' | unsafe"></h2>
-      <span ng-bind="person.bio | words:5"></span>
-    </li>
-  </ul>
+    <ul class="mentions list">
+        <li mentio-menu-item="person" ng-repeat="person in items" class="item">
+            <img ng-src="{{person.imageUrl}}" />
+            <h2 ng-bind-html="person.name | mentioHighlight:typedTerm:'menu-highlighted' | unsafe"></h2>
+            <span ng-bind="person.bio | words:5"></span>
+        </li>
+    </ul>
 </script>

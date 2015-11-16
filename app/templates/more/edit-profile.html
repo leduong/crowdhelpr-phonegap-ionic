@@ -1,36 +1,36 @@
 <ion-view view-title="Edit Profile" cache-view="false">
-  <ion-content class="padding">
-    <ul class="list">
-      <a class="edit-profile item item-avatar" href="javascript:;">
-        <img ng-src="{{ user.image_url | avatar: user.email }}">
-      </a>
-      <label class="item item-input">
-        <input type="text" placeholder="Street" ng-model="data.street">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="City" ng-model="data.city">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="State" ng-model="data.state">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Zip Code" ng-model="data.zipcode">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Mobile Number" ng-model="data.phone_no">
-      </label>
-      <li class="item item-toggle">
-        Privacy
-        <label class="toggle">
-          <input type="checkbox" ng-model="data.privacy">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-        </label>
-      </li>
-      <li>
-        <button class="button button-calm button-full" ng-click="save(data)">Save</button>
-      </li>
-    </ul>
-  </ion-content>
+    <ion-content class="padding">
+        <ul class="list">
+            <a class="edit-profile item item-avatar">
+                <img ng-src="{{ user.image_url | avatar: user.email }}" />
+            </a>
+            <label class="item item-input">
+                <input type="text" placeholder="Street" ng-model="data.street">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="City" ng-model="data.city">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="State" ng-model="data.state">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Zip Code" ng-model="data.zipcode">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Mobile Number" ng-model="data.phone_no">
+            </label>
+            <li class="item item-toggle">
+                Privacy
+                <label class="toggle">
+                    <input type="checkbox" ng-model="data.privacy">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+            <li>
+                <button class="button button-calm button-full" ng-click="save(data)">Save</button>
+            </li>
+        </ul>
+    </ion-content>
 </ion-view>

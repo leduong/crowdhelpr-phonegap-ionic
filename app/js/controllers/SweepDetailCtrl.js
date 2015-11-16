@@ -3,8 +3,8 @@
 angular.module('CrowdhelprApp').
 
 controller('SweepDetailCtrl', [
-  '$scope', '$stateParams', '$state', 'Sweeps', '$ionicActionSheet', '$localStorage', '$ionicPopup', 'User', '$cordovaSocialSharing',
-  function($scope, $stateParams, $state, Sweeps, $ionicActionSheet, $localStorage, $ionicPopup, User, $cordovaSocialSharing) {
+  '$rootScope', '$scope', '$state', 'Sweeps', 'User', '$localStorage', '$ionicPopup', '$cordovaSocialSharing', '$ionicActionSheet',
+  function($rootScope, $scope, $state, Sweeps, User, $localStorage, $ionicPopup, $cordovaSocialSharing, $ionicActionSheet) {
     var sweepObject = new Sweeps();
     var userObject = new User();
     $scope.data = {};
@@ -14,14 +14,13 @@ controller('SweepDetailCtrl', [
     $scope.user = $localStorage.current_user;
 
     $scope.share = function() {
+      $rootScope.$broadcast('loading:show');
       var sweep = $scope.sweep;
-      // backend not yet
-      sweep.sharing_url = 'https://www.crowdhelpr.com/app/sweeps/Z78ihoc';
-
       $cordovaSocialSharing
-        .share(sweep.title, sweep.image_url, sweep.media_url, sweep.sharing_url)
+        .share(sweep.title + '\n' + sweep.sharing_url, sweep.image_url, sweep.media_url, sweep.sharing_url)
         .then(function() {
           // sweepObject.share(sweep.id);
+          $rootScope.$broadcast('loading:hide');
         }, function(err) {
           console.log(err);
           // An error occurred. Show a message to the user
