@@ -10,7 +10,7 @@
 
 Clone this project and install dependencies
 ```bash
-git clone https://bitbucket.org/joko3ono/ionic-crowdhelpr.git
+git clone https://github.com/crowdhelpr-phonegap-ionic.git
 npm install -g bower gulp
 npm install
 bower install
